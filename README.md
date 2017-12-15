@@ -21,7 +21,7 @@
     * [6-延迟显示emptyView](https://github.com/yangli-dev/LYEmptyView#6-延迟显示emptyView)<br>
     * [7-特殊需求，手动控制emptyView的显示隐藏](https://github.com/yangli-dev/LYEmptyView#7-特殊需求，手动控制emptyView的显示隐藏)<br>
 
-## 一-一效果展示
+## 一-效果展示
 
 ![](https://github.com/yangli-dev/LYEmptyView/blob/master/images/ImitateOtherApp.png)
 

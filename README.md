@@ -10,16 +10,16 @@
 | 支持全部的刷新方法 | reloadData、insert...、delete...等一共9种方法 |
 
 # 目录
-* [一、效果展示]()<br>
-* [二、集成方式]()<br>
-* [三、使用参考示例]()<br>
-    * [1.一行代码集成 空内容视图]()<br>
-    * [2.自由选择空内容元素]()<br>
-    * [3.自定义空内容元素]()<br>
-    * [4.自定义元素的UI样式]()<br>
-    * [5.二次封装]()<br>
-    * [6.延迟显示emptyView]()<br>
-    * [7.特殊需求，手动控制emptyView的显示隐藏]()<br>
+* [一、效果展示](https://github.com/yangli-dev/LYEmptyView#一、效果展示)<br>
+* [二、集成方式](https://github.com/yangli-dev/LYEmptyView#二、集成方式)<br>
+* [三、使用参考示例](https://github.com/yangli-dev/LYEmptyView#三、使用参考示例)<br>
+    * [1.一行代码集成空内容视图](https://github.com/yangli-dev/LYEmptyView#1.一行代码集成空内容视图)<br>
+    * [2.自由选择空内容元素](https://github.com/yangli-dev/LYEmptyView#2.自由选择空内容元素)<br>
+    * [3.自定义空内容元素](https://github.com/yangli-dev/LYEmptyView#3.自定义空内容元素)<br>
+    * [4.自定义元素的UI样式](https://github.com/yangli-dev/LYEmptyView#4.自定义元素的UI样式)<br>
+    * [5.二次封装](https://github.com/yangli-dev/LYEmptyView#5.二次封装)<br>
+    * [6.延迟显示emptyView](https://github.com/yangli-dev/LYEmptyView#6.延迟显示emptyView)<br>
+    * [7.特殊需求，手动控制emptyView的显示隐藏](https://github.com/yangli-dev/LYEmptyView#7.特殊需求，手动控制emptyView的显示隐藏)<br>
 
 ## 一、效果展示
 
@@ -37,7 +37,7 @@
 
 ### 1.一行代码集成 空内容视图
 
-```
+```Objective-C
 //框架方法
 self.tableView.ly_emptyView = [LYEmptyView emptyViewWithImageStr:@"noData"
                                                         titleStr:@"暂无数据，点击重新加载"
@@ -45,7 +45,7 @@ self.tableView.ly_emptyView = [LYEmptyView emptyViewWithImageStr:@"noData"
 ```
 
 PS:可对库进行二次封装，调用更简洁（二次封装方法在下面的示例5中会讲到）
-```
+```Objective-C
 //二次封装方法，调用简洁
 self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 ```
@@ -56,7 +56,7 @@ self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 ![](https://github.com/yangli-dev/LYEmptyView/blob/master/images/example1.gif)
 
 ### 2.自由选择空内容元素
-```
+```Objective-C
 交互事件可选择SEL或block方式
 self.tableView.ly_emptyView = [LYEmptyView emptyActionViewWithImageStr:@"noData"
                                                               titleStr:@"无数据"
@@ -88,7 +88,7 @@ self.tableView.ly_emptyView = [LYEmptyView emptyActionViewWithImageStr:@""
 特殊情况下，如果空内容状态布局不满足需求时，可进行自定义<br>
 通过方法`  + (instancetype)emptyViewWithCustomView:(UIView *)customView;`<br>
 传入一个View 即可创建一个自定义的emptyView
-```
+```Objective-C
 self.tableView.ly_emptyView = [LYEmptyView emptyViewWithCustomView:customView];
 ```
 
@@ -96,7 +96,7 @@ self.tableView.ly_emptyView = [LYEmptyView emptyViewWithCustomView:customView];
 
 
 ### 4.自定义元素的UI样式
-```
+```Objective-C
   //初始化一个emptyView
   LYEmptyView *emptyView = [LYEmptyView emptyActionViewWithImageStr:@"noData"
                                                            titleStr:@"无数据"
@@ -133,7 +133,7 @@ self.tableView.ly_emptyView = [LYEmptyView emptyViewWithCustomView:customView];
 
 ##### 1)新建一个类继承自LYEmptyView，例如demo中的MyDIYEmpty
 ##### 2)重写`- (void)prepare` 方法，并修改想要改变的元素的UI样式
-```
+```Objective-C
 - (void)prepare{
     [super prepare];
     
@@ -150,7 +150,7 @@ self.tableView.ly_emptyView = [LYEmptyView emptyViewWithCustomView:customView];
 ```
 操作上面的两步就可实现对样式的单独管理<br>
 调用方法不变，只是调用的类变成了MYDiyEmpty
-```
+```Objective-C
 self.tableView.ly_emptyView = [MYDiyEmpty emptyActionViewWithImageStr:@"noData"
                                                              titleStr:@"无数据"
                                                             detailStr:@"请稍后再试!"
@@ -160,7 +160,7 @@ self.tableView.ly_emptyView = [MYDiyEmpty emptyActionViewWithImageStr:@"noData"
 ##### 3)进一步封装显示的元素内容，比如无数据状态图、无网络状态图<br>
 在MYDiyEmpty.h定义方法`+ (instancetype)diyNoDataEmpty;`<br>
 在MYDiyEmpty.m实现方法
-```
+```Objective-C
 + (instancetype)diyNoDataEmpty{
     return [MyDIYEmpty emptyViewWithImageStr:@"nodata"
                                     titleStr:@"暂无数据"
@@ -174,7 +174,7 @@ self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 ### 6.延迟显示emptyView
 如示例1图，框架自动根据DataSource计算是否显示emptyView，在空页面发起网络请求时，DataSource肯定为空，会自动显示emptyView，有的产品需求可能不希望这样，希望发起请求时暂时隐藏emptyView。
 本框架提供了两个方法可实现此需求，两个方法都是scrollView的分类，调用非常方便
-```
+```Objective-C
  /**
    一般用于开始请求网络时调用，ly_startLoading调用时会暂时隐藏emptyView
    当调用ly_endLoading方法时，ly_endLoading方法内部会根据当前的tableView/collectionView的
@@ -193,7 +193,7 @@ self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 *注意点:使用这两个方法，请先将emptyView的autoShowEmptyView属性置为NO，关闭自动显隐
 
 以下是调用示例（具体细节可参看demo中的demo2）
-```
+```Objective-C
 //关闭自动显隐
 self.tableView.ly_emptyView.autoShowEmptyView = NO;
 //网络请求时调用
@@ -208,7 +208,7 @@ self.tableView.ly_emptyView.autoShowEmptyView = NO;
 在某些特殊界面下，有的tableView/collectionView有固定的一些死数据，其它的数据根据网络加载，这时根据以上的示例方法可能达不到这需求。<br>
 本框架提供另外的两个方法来解决这个问题。
 
-```
+```Objective-C
 /**
  手动调用显示emptyView
  */
@@ -223,7 +223,7 @@ self.tableView.ly_emptyView.autoShowEmptyView = NO;
 *注意点:使用这两个方法，请先将emptyView的autoShowEmptyView属性置为NO，关闭自动显隐
 
 以下是调用示例（具体细节可参看demo中的demo4）
-```
+```Objective-C
 //关闭自动显隐
 self.tableView.ly_emptyView.autoShowEmptyView = NO;
 //显示emptyView

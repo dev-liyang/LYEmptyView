@@ -10,8 +10,10 @@
 
 @interface MyDIYEmpty : LYEmptyView
 
-+ (instancetype)diyEmptyView;
++ (instancetype)diyNoDataEmpty;
 
-+ (instancetype)diyEmptyActionViewWithTarget:(id)target action:(SEL)action;
++ (instancetype)diyNoNetworkEmptyWithTarget:(id)target action:(SEL)action;
+
++ (instancetype)diyCustomEmptyViewWithTarget:(id)target action:(SEL)action;
 
 @end

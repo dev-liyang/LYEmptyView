@@ -52,14 +52,18 @@
     }
     
     //1 使用框架UI样式，直接调用
-    self.tableView.ly_emptyView = [LYEmptyView emptyViewWithImageStr:@"noData" titleStr:@"暂无数据，点击重新加载" detailStr:@""];
+    self.tableView.ly_emptyView = [LYEmptyView emptyViewWithImageStr:@"noData"
+                                                            titleStr:@"暂无数据，点击重新加载"
+                                                           detailStr:@""];
     
     //2 使用自定义UI样式，MyDIYEmpty 是继承自LYEmptyView 的自定义的 empty
     //2-1
-//    self.tableView.ly_emptyView = [MyDIYEmpty emptyViewWithImageStr:@"noData" titleStr:@"暂无数据" detailStr:@"请检查您的网络连接是否正确!"];
+//    self.tableView.ly_emptyView = [MyDIYEmpty emptyViewWithImageStr:@"noData"
+//                                                           titleStr:@"暂无数据"
+//                                                          detailStr:@"请检查您的网络连接是否正确!"];
     
-    //2-2
-//    self.tableView.ly_emptyView = [MyDIYEmpty diyEmptyView]; //和2-1方式一样效果,只是多封装了一下
+    //2-2 和2-1方式一样效果,只是多封装了一下
+//    self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
     
     //emptyView内容上的点击事件监听
     __weak typeof(self)weakSelf = self;

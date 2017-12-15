@@ -31,9 +31,16 @@
 - (void)ly_endLoading;
 
 
-//调用下面两个手动显隐的方法，不受DataSource的影响，单独设置显示与隐藏
-- (void)ly_showEmptyView;
-- (void)ly_hideEmptyView;
+//调用下面两个手动显隐的方法，不受DataSource的影响，单独设置显示与隐藏（前提是关闭autoShowEmptyView）
 
+/**
+ 手动调用显示emptyView
+ */
+- (void)ly_showEmptyView;
+
+/**
+ 手动调用隐藏emptyView
+ */
+- (void)ly_hideEmptyView;
 
 @end

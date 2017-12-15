@@ -56,8 +56,13 @@
 
 - (void)setApp:(ApplicationExsampleType)apptype{
     
+    
     __weak typeof(self)weakSelf = self;
-    LYEmptyView *emptyView = [LYEmptyView emptyActionViewWithImageStr:_dataDic[@"image"] titleStr:_dataDic[@"titleStr"] detailStr:_dataDic[@"detailStr"] btnTitleStr:_dataDic[@"btnTitle"] btnClickBlock:^{
+    LYEmptyView *emptyView = [LYEmptyView emptyActionViewWithImageStr:_dataDic[@"image"]
+                                                             titleStr:_dataDic[@"titleStr"]
+                                                            detailStr:_dataDic[@"detailStr"]
+                                                          btnTitleStr:_dataDic[@"btnTitle"]
+                                                        btnClickBlock:^{
         [weakSelf addDataClick:nil];
     }];
     

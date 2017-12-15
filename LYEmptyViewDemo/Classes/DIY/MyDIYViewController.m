@@ -56,31 +56,33 @@
         self.tableView.ly_emptyView = [MyDIYEmpty emptyActionViewWithImageStr:_dataDic[@"image"] titleStr:_dataDic[@"titleStr"] detailStr:_dataDic[@"detailStr"] btnTitleStr:_dataDic[@"btnTitle"] target:self action:@selector(addDataClick:)];
         
     }else{//自定义view
+
+//        UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 80)];
+//
+//        UILabel *titleLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
+//        titleLab.font = [UIFont systemFontOfSize:16];
+//        titleLab.textAlignment = NSTextAlignmentCenter;
+//        titleLab.text = @"暂无数据，请稍后再试！";
+//        [customView addSubview:titleLab];
+//
+//        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 50, 80, 30)];
+//        button.backgroundColor = [UIColor blueColor];
+//        [button setTitle:@"重试" forState:UIControlStateNormal];
+//        button.titleLabel.font = [UIFont systemFontOfSize:15];
+//        [button addTarget:self action:@selector(addDataClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [customView addSubview:button];
+//
+//        UIButton *button2 = [[UIButton alloc] initWithFrame:CGRectMake(120, 50, 80, 30)];
+//        button2.backgroundColor = [UIColor redColor];
+//        [button2 setTitle:@"加载" forState:UIControlStateNormal];
+//        button2.titleLabel.font = [UIFont systemFontOfSize:15];
+//        [button2 addTarget:self action:@selector(addDataClick:) forControlEvents:UIControlEventTouchUpInside];
+//         [customView addSubview:button2];
+
+//        self.tableView.ly_emptyView = [LYEmptyView emptyViewWithCustomView:customView];
         
-        UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 80)];
-        
-        UILabel *titleLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
-        titleLab.font = [UIFont systemFontOfSize:16];
-        titleLab.textAlignment = NSTextAlignmentCenter;
-        titleLab.text = @"暂无数据，请稍后再试！";
-        [customView addSubview:titleLab];
-        
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 50, 80, 30)];
-        button.backgroundColor = [UIColor blueColor];
-        [button setTitle:@"重试" forState:UIControlStateNormal];
-        button.titleLabel.font = [UIFont systemFontOfSize:15];
-        [button addTarget:self action:@selector(addDataClick:) forControlEvents:UIControlEventTouchUpInside];
-        [customView addSubview:button];
-        
-        UIButton *button2 = [[UIButton alloc] initWithFrame:CGRectMake(120, 50, 80, 30)];
-        button2.backgroundColor = [UIColor redColor];
-        [button2 setTitle:@"加载" forState:UIControlStateNormal];
-        button2.titleLabel.font = [UIFont systemFontOfSize:15];
-        [button2 addTarget:self action:@selector(addDataClick:) forControlEvents:UIControlEventTouchUpInside];
-         [customView addSubview:button2];
-        
-        self.tableView.ly_emptyView = [MyDIYEmpty emptyViewWithCustomView:customView];
-        
+        //二次封装
+        self.tableView.ly_emptyView = [MyDIYEmpty diyCustomEmptyViewWithTarget:self action:@selector(addDataClick:)];
     }
 }
 
@@ -89,7 +91,6 @@
     return [self.dataArray count];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     return 52;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

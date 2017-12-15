@@ -16,6 +16,7 @@
 
 static char kEmptyViewKey;
 - (void)setLy_emptyView:(LYEmptyView *)ly_emptyView{
+    NSLog(@"setLy_emptyView:%@", ly_emptyView);
     if (ly_emptyView != self.ly_emptyView) {
         
         objc_setAssociatedObject(self, &kEmptyViewKey, ly_emptyView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -25,6 +26,7 @@ static char kEmptyViewKey;
                 [view removeFromSuperview];
             }
         }
+        NSLog(@"setLy_emptyView:%@", self.ly_emptyView);
         [self addSubview:self.ly_emptyView];
     }
 }
@@ -83,9 +85,12 @@ static char kEmptyViewKey;
 
 #pragma mark - Public Method
 - (void)ly_showEmptyView{
+    
+    [self.ly_emptyView.superview layoutSubviews];
+    
+    self.ly_emptyView.hidden = NO;
     //让 emptyBGView 始终保持在最上层
     [self bringSubviewToFront:self.ly_emptyView];
-    self.ly_emptyView.hidden = NO;
 }
 - (void)ly_hideEmptyView{
     self.ly_emptyView.hidden = YES;

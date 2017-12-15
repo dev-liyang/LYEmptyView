@@ -36,12 +36,14 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     NSMutableArray *arr = [NSMutableArray arrayWithArray:@[@"数据-0", @"数据-0"]];
-    NSMutableArray *arr1 = [NSMutableArray arrayWithArray:@[@"数据-1", @"数据-1"]];
+    NSMutableArray *arr1 = [NSMutableArray arrayWithArray:@[]];
     self.dataArray = [NSMutableArray array];
     [self.dataArray addObject:arr];
     [self.dataArray addObject:arr1];
     
     [self setupUI];
+    
+    [self setEmpty];
 }
 
 - (void)setupUI{
@@ -52,7 +54,9 @@
         self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     
-    self.tableView.ly_emptyView = [DemoEmptyView diyEmptyView];
+    DemoEmptyView *emptyView = [DemoEmptyView diyEmptyView];
+    NSLog(@"DemoEmptyView:%@",emptyView);
+    self.tableView.ly_emptyView = emptyView;
     self.tableView.ly_emptyView.imageSize = CGSizeMake(80, 80);
     self.tableView.ly_emptyView.contentViewOffset = 50;
 //    self.tableView.ly_emptyView.contentViewY = kStatusBarHeight + 44 + 114 + 50;
@@ -113,11 +117,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             [self.tableView reloadData];
-            if ([self.dataArray[1] count]) {
-                [self.tableView ly_hideEmptyView];
-            }else{
-                [self.tableView ly_showEmptyView];
-            }
+            [self setEmpty];
         });
     });
 }
@@ -128,8 +128,16 @@
 - (IBAction)clearData:(id)sender {
     [self.dataArray[1] removeAllObjects];
     [self.tableView reloadData];
-    if ([self.dataArray[1] count]) {
-        [self.tableView ly_hideEmptyView];
+    [self setEmpty];
+}
+
+- (void)setEmpty{
+    if (self.dataArray.count >= 2) {
+        if ([self.dataArray[1] count]) {
+            [self.tableView ly_hideEmptyView];
+        }else{
+            [self.tableView ly_showEmptyView];
+        }
     }else{
         [self.tableView ly_showEmptyView];
     }

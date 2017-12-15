@@ -24,7 +24,6 @@
     [super prepare];
     
     self.autoShowEmptyView = NO;
-//    self.imageSize = CGSizeMake(120, 120);
     
 }
 

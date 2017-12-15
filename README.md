@@ -13,7 +13,7 @@
 * [ 一-效果展示 ](https://github.com/yangli-dev/LYEmptyView#一-效果展示)<br>
 * [ 二-集成方式 ](https://github.com/yangli-dev/LYEmptyView#二-集成方式)<br>
 * [ 三-使用参考示例 ](https://github.com/yangli-dev/LYEmptyView#三-使用参考示例)<br>
-    * [1-一行代码集成空内容视图-example1](https://github.com/yangli-dev/LYEmptyView#1-一行代码集成空内容视图-example1)<br>
+    * [1-一行代码集成空内容视图](https://github.com/yangli-dev/LYEmptyView#1-一行代码集成空内容视图)<br>
     * [2-自由选择空内容元素](https://github.com/yangli-dev/LYEmptyView#2-自由选择空内容元素)<br>
     * [3-自定义空内容元素](https://github.com/yangli-dev/LYEmptyView#3-自定义空内容元素)<br>
     * [4-自定义元素的UI样式](https://github.com/yangli-dev/LYEmptyView#4-自定义元素的UI样式)<br>
@@ -35,7 +35,7 @@
 
 ## 三-使用参考示例
 
-### 1-一行代码集成空内容视图-example1
+### 1-一行代码集成空内容视图
 
 ```Objective-C
 //框架方法

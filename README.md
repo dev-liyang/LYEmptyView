@@ -10,22 +10,22 @@
 | 支持全部的刷新方法 | reloadData、insert...、delete...等一共9种方法 |
 
 # 目录
-* [ 一效果展示 ](https://github.com/yangli-dev/LYEmptyView#效果展示)<br>
-* [ 二 集成方式 ](https://github.com/yangli-dev/LYEmptyView#二 集成方式)<br>
+* [ 一-效果展示 ](https://github.com/yangli-dev/LYEmptyView#一-效果展示)<br>
+* [ 二-集成方式 ](https://github.com/yangli-dev/LYEmptyView#二-集成方式)<br>
 * [ 三-使用参考示例 ](https://github.com/yangli-dev/LYEmptyView#三-使用参考示例)<br>
     * [1-一行代码集成空内容视图-example1](https://github.com/yangli-dev/LYEmptyView#1-一行代码集成空内容视图-example1)<br>
-    * [2.自由选择空内容元素](https://github.com/yangli-dev/LYEmptyView#2.自由选择空内容元素)<br>
-    * [3.自定义空内容元素](https://github.com/yangli-dev/LYEmptyView#3.自定义空内容元素)<br>
-    * [4.自定义元素的UI样式](https://github.com/yangli-dev/LYEmptyView#4.自定义元素的UI样式)<br>
-    * [5.二次封装](https://github.com/yangli-dev/LYEmptyView#5.二次封装)<br>
-    * [6.延迟显示emptyView](https://github.com/yangli-dev/LYEmptyView#6.延迟显示emptyView)<br>
-    * [7.特殊需求，手动控制emptyView的显示隐藏](https://github.com/yangli-dev/LYEmptyView#7.特殊需求，手动控制emptyView的显示隐藏)<br>
+    * [2-自由选择空内容元素](https://github.com/yangli-dev/LYEmptyView#2-自由选择空内容元素)<br>
+    * [3-自定义空内容元素](https://github.com/yangli-dev/LYEmptyView#3-自定义空内容元素)<br>
+    * [4-自定义元素的UI样式](https://github.com/yangli-dev/LYEmptyView#4-自定义元素的UI样式)<br>
+    * [5-二次封装](https://github.com/yangli-dev/LYEmptyView#5-二次封装)<br>
+    * [6-延迟显示emptyView](https://github.com/yangli-dev/LYEmptyView#6-延迟显示emptyView)<br>
+    * [7-特殊需求，手动控制emptyView的显示隐藏](https://github.com/yangli-dev/LYEmptyView#7-特殊需求，手动控制emptyView的显示隐藏)<br>
 
-## 一效果展示
+## 一-一效果展示
 
 ![](https://github.com/yangli-dev/LYEmptyView/blob/master/images/ImitateOtherApp.png)
 
-## 二.集成方式
+## 二-集成方式
 
 > 1.支持Cocoapods方式: pod 'LYEmptyView'<br>
 2.手动下载导入,将LYEmptyView文件夹，导入你的工程即可
@@ -55,7 +55,7 @@ self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 
 ![](https://github.com/yangli-dev/LYEmptyView/blob/master/images/example1.gif)
 
-### 2.自由选择空内容元素
+### 2-自由选择空内容元素
 ```Objective-C
 交互事件可选择SEL或block方式
 self.tableView.ly_emptyView = [LYEmptyView emptyActionViewWithImageStr:@"noData"
@@ -84,7 +84,7 @@ self.tableView.ly_emptyView = [LYEmptyView emptyActionViewWithImageStr:@""
 
 ![](https://github.com/yangli-dev/LYEmptyView/blob/master/images/example2.png)
 
-### 3.自定义空内容元素
+### 3-自定义空内容元素
 特殊情况下，如果空内容状态布局不满足需求时，可进行自定义<br>
 通过方法`  + (instancetype)emptyViewWithCustomView:(UIView *)customView;`<br>
 传入一个View 即可创建一个自定义的emptyView
@@ -95,7 +95,7 @@ self.tableView.ly_emptyView = [LYEmptyView emptyViewWithCustomView:customView];
 ![](https://github.com/yangli-dev/LYEmptyView/blob/master/images/example3.png)
 
 
-### 4.自定义元素的UI样式
+### 4-自定义元素的UI样式
 ```Objective-C
   //初始化一个emptyView
   LYEmptyView *emptyView = [LYEmptyView emptyActionViewWithImageStr:@"noData"
@@ -127,7 +127,7 @@ self.tableView.ly_emptyView = [LYEmptyView emptyViewWithCustomView:customView];
 
 ![](https://github.com/yangli-dev/LYEmptyView/blob/master/images/example4.png)
 
-### 5.二次封装
+### 5-二次封装
 第4小节的示例代码，修改emptyView的样式需要一个个属性单独去改，如果项目中每个界面都这么写就显得很麻烦，而且不易维护<br>
 解决办法是对库进行二次封装，二次封装后，对UI样式单独管理，方便维护<br>
 
@@ -171,7 +171,7 @@ self.tableView.ly_emptyView = [MYDiyEmpty emptyActionViewWithImageStr:@"noData"
 self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 
 
-### 6.延迟显示emptyView
+### 6-延迟显示emptyView
 如示例1图，框架自动根据DataSource计算是否显示emptyView，在空页面发起网络请求时，DataSource肯定为空，会自动显示emptyView，有的产品需求可能不希望这样，希望发起请求时暂时隐藏emptyView。
 本框架提供了两个方法可实现此需求，两个方法都是scrollView的分类，调用非常方便
 ```Objective-C
@@ -204,7 +204,7 @@ self.tableView.ly_emptyView.autoShowEmptyView = NO;
 
 ![](https://github.com/yangli-dev/LYEmptyView/blob/master/images/example6.gif)
 
-### 7.特殊需求，手动控制emptyView的显示隐藏
+### 7-特殊需求，手动控制emptyView的显示隐藏
 在某些特殊界面下，有的tableView/collectionView有固定的一些死数据，其它的数据根据网络加载，这时根据以上的示例方法可能达不到这需求。<br>
 本框架提供另外的两个方法来解决这个问题。
 

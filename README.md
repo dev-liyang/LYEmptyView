@@ -10,7 +10,7 @@
 | 支持全部的刷新方法 | reloadData、insert...、delete...等一共9种方法 |
 
 # 目录
-* [一、效果展示](https://github.com/yangli-dev/LYEmptyView#一、效果展示)<br>
+* [ 一效果展示 ](https://github.com/yangli-dev/LYEmptyView#一效果展示)<br>
 * [二、集成方式](https://github.com/yangli-dev/LYEmptyView#二、集成方式)<br>
 * [三、使用参考示例](https://github.com/yangli-dev/LYEmptyView#三、使用参考示例)<br>
     * [1.一行代码集成空内容视图](https://github.com/yangli-dev/LYEmptyView#1.一行代码集成空内容视图)<br>
@@ -21,7 +21,7 @@
     * [6.延迟显示emptyView](https://github.com/yangli-dev/LYEmptyView#6.延迟显示emptyView)<br>
     * [7.特殊需求，手动控制emptyView的显示隐藏](https://github.com/yangli-dev/LYEmptyView#7.特殊需求，手动控制emptyView的显示隐藏)<br>
 
-## 一、效果展示
+## 一效果展示
 
 ![](https://github.com/yangli-dev/LYEmptyView/blob/master/images/ImitateOtherApp.png)
 

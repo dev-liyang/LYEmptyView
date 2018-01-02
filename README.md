@@ -2,18 +2,15 @@
 空内容界面占位视图，支持TableView、CollectionView，高强度自定义，基于runtime调用灵活，
 完全与项目解耦，编写一行代码就可集成一个简单的空内容视图
 
->此框架是本人在5，6个月前，公司启动新项目的时候，一起开始着手编写的，经过这个项目的验证与考验，不断的进行完善，现在此框架已经变得如鱼得水，在此特将这份框架整理共享出来供大家参考与学习。
+>此框架是本人在5，6个月前，公司启动新项目的时候，一起开始着手编写的，经过这个项目的验证与考验，不断的进行完善，在此特将这份框架分享出来供大家参考与学习。
 
 | 特点  | 描述 |
 | ---------- | -----------|
-| 耦合度几乎为0 | 在界面中加入一行代码即可集成，与原代码没有一点冲突 self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty]; |
+| 与项目完全解耦 | 在需要集成的界面中加入一行代码即可集成，与原代码没有一点耦合度  |
 | 0学习成本 | 无需关心视图的显示隐藏时机，只需加入一行代码即可，框架监听了系统刷新UI的方法，其内部计算后自动进行显示隐藏 |
-| 高度自定义   | 利用继承特性，可对框架进行二次封装，使得自定义更简便  |
-| 可扩展性强，满足特殊需求 | 可以自定义你想要的所有的空内容效果，封装后也是一行代码调用搞定 |
-| 支持全部的刷新方法 | reloadData、insert...、delete...等一共9种方法 |
-
-
->框架低耦合的特性，不要担心框架的样式不满足你的项目需求，也不用担心自定义很复杂，更不用担心自定义后的调用逻辑很复杂，no no no，这些都是浮云！看完下面的示例你就会发现，原来空页面占位图的实现可以这么简单。一个界面一行代码搞定，自定义样式的集成还是一行代码搞定，相信就是这么简单！
+| 调用简单 | 利用分类+runtime，使调用非常简便 |
+| 高度自定义   | 利用继承特性，可对框架进行二次封装，使自定义更简便  |
+| 支持全部的刷新方法 | reloadData、insert...、delete...等一共9种方法。你的项目中调用这些刷新方法时，该框架都会自动根据DataSource自动进行计算判断是否显示emptyView |
 
 
 # 目录
@@ -76,11 +73,6 @@ self.tableView.ly_emptyView = [LYEmptyView emptyActionViewWithImageStr:@"noData"
                                                              detailStr:@""
                                                            btnTitleStr:@""
                                                          btnClickBlock:^{}];
-self.tableView.ly_emptyView = [LYEmptyView emptyActionViewWithImageStr:@""
-                                                              titleStr:@"暂无数据，请稍后再试!"
-                                                             detailStr:@""
-                                                           btnTitleStr:@""
-                                                         btnClickBlock:^{}];
 //    imageStr    : 占位图片
 //    titleStr    : 标题
 //    detailStr   : 详细描述
@@ -112,20 +104,12 @@ self.tableView.ly_emptyView = [LYEmptyView emptyViewWithCustomView:customView];
                                                       btnClickBlock:^{}];
   //元素竖直方向的间距
   emptyView.subViewMargin = 20.f;
-  //标题字体
-  emptyView.titleLabFont = [UIFont systemFontOfSize:25];
   //标题颜色
   emptyView.titleLabTextColor = MainColor(90, 180, 160);
   //描述字体
   emptyView.detailLabFont = [UIFont systemFontOfSize:17];
-  //描述颜色
-  emptyView.detailLabTextColor = MainColor(180, 120, 90);
-  //描述label最大的行数
-  emptyView.detailLabMaxLines = 5;
   //按钮背景色
   emptyView.actionBtnBackGroundColor = MainColor(90, 180, 160);
-  //按钮文字颜色
-  emptyView.actionBtnTitleColor = [UIColor whiteColor];
 
   //设置空内容占位图
   self.tableView.ly_emptyView = emptyView;

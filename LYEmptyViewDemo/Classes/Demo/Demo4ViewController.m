@@ -109,7 +109,6 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         sleep(1);
-        
         [self.dataArray[1] removeAllObjects];
         NSArray *arr = @[@"数据-1", @"数据-1"];
         [self.dataArray[1] addObjectsFromArray:arr];

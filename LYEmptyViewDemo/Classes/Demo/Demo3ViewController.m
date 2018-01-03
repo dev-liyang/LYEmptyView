@@ -106,6 +106,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         sleep(1);
+        
         [self.dataArray removeAllObjects];
         
         NSArray *arr = @[@"数据1", @"数据2", @"数据3", @"数据4", @"数据5"];
@@ -146,7 +147,7 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        sleep(0.5);
+        sleep(1);
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             [self clearData:nil];

@@ -16,7 +16,6 @@
 
 static char kEmptyViewKey;
 - (void)setLy_emptyView:(LYEmptyView *)ly_emptyView{
-    NSLog(@"setLy_emptyView:%@", ly_emptyView);
     if (ly_emptyView != self.ly_emptyView) {
         
         objc_setAssociatedObject(self, &kEmptyViewKey, ly_emptyView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -26,7 +25,6 @@ static char kEmptyViewKey;
                 [view removeFromSuperview];
             }
         }
-        NSLog(@"setLy_emptyView:%@", self.ly_emptyView);
         [self addSubview:self.ly_emptyView];
     }
 }

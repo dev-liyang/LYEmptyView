@@ -1,7 +1,4 @@
 # LYEmptyView
-iOS/一行代码集成空白页面占位图(基于runtime+MJRefresh思想)
-空内容界面占位视图。支持TableView、CollectionView，高强度自定义，基于runtime调用灵活
-
 不需要遵循协议，不需要设置代理，不需要实现代理方法，只需这一句代码，就可为一个UITableViwe/UICollectionView集成空白页面占位图。<br>`self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];`
 
 | 特点  | 描述 |

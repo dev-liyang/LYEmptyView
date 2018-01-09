@@ -1,8 +1,8 @@
 # LYEmptyView
-空内容界面占位视图，支持TableView、CollectionView，高强度自定义，基于runtime调用灵活，
-完全与项目解耦，编写一行代码就可集成一个简单的空内容视图
+iOS/一行代码集成空白页面占位图(基于runtime+MJRefresh思想)
+空内容界面占位视图。支持TableView、CollectionView，高强度自定义，基于runtime调用灵活
 
->此框架是本人在5，6个月前，公司启动新项目的时候，一起开始着手编写的，经过这个项目的验证与考验，不断的进行完善，在此特将这份框架分享出来供大家参考与学习。
+不需要遵循协议，不需要设置代理，不需要实现代理方法，只需这一句代码，就可为一个UITableViwe/UICollectionView集成空白页面占位图。<br>`self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];`
 
 | 特点  | 描述 |
 | ---------- | -----------|
@@ -31,10 +31,11 @@
 
 ## 二-集成方式
 
-> 1.支持Cocoapods方式: pod 'LYEmptyView'<br>
-2.手动下载导入,将LYEmptyView文件夹，导入你的工程即可
-
-在使用的地方导入头文件：#import "LYEmptyViewHeader.h"
+1.Cocoapods方式集成: `pod 'LYEmptyView'`<br>
+使用时导入头文件 `#import <LYEmptyView/LYEmptyViewHeader.h>`
+<br><br>
+2.手动下载集成: 将LYEmptyView文件夹，导入你的工程<br>
+使用时导入头文件：`#import "LYEmptyViewHeader.h"`
 
 
 ## 三-使用参考示例
@@ -95,6 +96,7 @@ self.tableView.ly_emptyView = [LYEmptyView emptyViewWithCustomView:customView];
 
 
 ### 4-自定义元素的UI样式
+这里自定义UI样式需要很多代码，别担心，在示例5中会讲解二次封装的方式，封装后调用时就只需要一行代码了 ^_^
 ```Objective-C
   //初始化一个emptyView
   LYEmptyView *emptyView = [LYEmptyView emptyActionViewWithImageStr:@"noData"
@@ -142,15 +144,15 @@ self.tableView.ly_emptyView = [LYEmptyView emptyViewWithCustomView:customView];
 操作上面的两步就可实现对样式的单独管理<br>
 调用方法不变，只是调用的类变成了MYDiyEmpty
 ```Objective-C
-self.tableView.ly_emptyView = [MYDiyEmpty emptyActionViewWithImageStr:@"noData"
+self.tableView.ly_emptyView = [MyDIYEmpty emptyActionViewWithImageStr:@"noData"
                                                              titleStr:@"无数据"
                                                             detailStr:@"请稍后再试!"
                                                           btnTitleStr:@"重新加载"
                                                         btnClickBlock:^{}];
 ```
 ##### 3)进一步封装显示的元素内容，比如无数据状态图、无网络状态图<br>
-在MYDiyEmpty.h定义方法`+ (instancetype)diyNoDataEmpty;`<br>
-在MYDiyEmpty.m实现方法
+在MyDIYEmpty.h定义方法`+ (instancetype)diyNoDataEmpty;`<br>
+在MyDIYEmpty.m实现方法
 ```Objective-C
 + (instancetype)diyNoDataEmpty{
     return [MyDIYEmpty emptyViewWithImageStr:@"nodata"
@@ -185,12 +187,14 @@ self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 
 以下是调用示例（具体细节可参看demo中的demo2）
 ```Objective-C
-//关闭自动显隐
-self.tableView.ly_emptyView.autoShowEmptyView = NO;
-//网络请求时调用
-[self.tableView ly_startLoading];
-//刷新UI时调用
-[self.tableView ly_endLoading];
+//1.先设置样式
+self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
+//2.关闭自动显隐（此步可封装进自定义类中，相关调用就可省去这步）
+self.tableView.ly_emptyView.autoShowEmptyView = NO;
+//3.网络请求时调用
+[self.tableView ly_startLoading];
+//4.刷新UI时调用（保证在刷新UI后调用）
+[self.tableView ly_endLoading];
 ```
 
 ![](https://github.com/yangli-dev/LYEmptyView/blob/master/images/example6.gif)
@@ -215,12 +219,14 @@ self.tableView.ly_emptyView.autoShowEmptyView = NO;
 
 以下是调用示例（具体细节可参看demo中的demo4）
 ```Objective-C
-//关闭自动显隐
-self.tableView.ly_emptyView.autoShowEmptyView = NO;
-//显示emptyView
-[self.tableView ly_showEmptyView];
-//隐藏emptyView
-[self.tableView ly_hideEmptyView];
+//1.先设置样式
+self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
+//2.关闭自动显隐（此步可封装进自定义类中，相关调用就可省去这步）
+self.tableView.ly_emptyView.autoShowEmptyView = NO;
+//3.显示emptyView
+[self.tableView ly_showEmptyView];
+//4.隐藏emptyView
+[self.tableView ly_hideEmptyView];
 ```
 
 ![](https://github.com/yangli-dev/LYEmptyView/blob/master/images/example7.gif)

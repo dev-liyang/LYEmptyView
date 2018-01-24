@@ -9,7 +9,6 @@
 | 高度自定义   | 利用继承特性，可对框架进行二次封装，使自定义更简便  |
 | 支持全部的刷新方法 | reloadData、insert...、delete...等一共9种方法。你的项目中调用这些刷新方法时，该框架都会自动根据DataSource自动进行计算判断是否显示emptyView |
 
-
 # 目录
 * [ 一-效果展示 ](https://github.com/yangli-dev/LYEmptyView#一-效果展示)<br>
 * [ 二-集成方式 ](https://github.com/yangli-dev/LYEmptyView#二-集成方式)<br>
@@ -21,6 +20,7 @@
     * [5-二次封装](https://github.com/yangli-dev/LYEmptyView#5-二次封装)<br>
     * [6-延迟显示emptyView](https://github.com/yangli-dev/LYEmptyView#6-延迟显示emptyView)<br>
     * [7-特殊需求，手动控制emptyView的显示隐藏](https://github.com/yangli-dev/LYEmptyView#7-特殊需求，手动控制emptyView的显示隐藏)<br>
+    * [8-scrollView调用示例](https://github.com/yangli-dev/LYEmptyView#8-scrollView调用示例)<br>
 
 ## 一-效果展示
 
@@ -228,7 +228,18 @@ self.tableView.ly_emptyView.autoShowEmptyView = NO;
 
 ![](https://github.com/yangli-dev/LYEmptyView/blob/master/images/example7.gif)
 
-
+### 8-scrollView调用示例
+因scrollView没有DataSource，代码无法判断scrollView上有无数据，所以scrollView想要实现占位图，
+还需通过两个方法来手动控制emptyView的显示和隐藏。
+以下是调用示例
+```Objective-C
+//1.先设置样式
+self.scrollView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
+//2.显示emptyView
+[self.scrollView ly_showEmptyView];
+//3.隐藏emptyView
+[self.scrollView ly_hideEmptyView];
+```
 
 
 

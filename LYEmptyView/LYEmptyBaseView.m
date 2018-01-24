@@ -3,7 +3,7 @@
 //  LYEmptyViewDemo
 //
 //  Created by liyang on 2017/5/5.
-//  Copyright © 2017年 waiyanxunfei. All rights reserved.
+//  Copyright © 2017年 liyang. All rights reserved.
 //
 
 #import "LYEmptyBaseView.h"
@@ -45,7 +45,6 @@
 }
 
 - (void)setupSubviews{
-    
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview
@@ -159,7 +158,6 @@
     _btnTitleStr = btnTitleStr;
     [self setupSubviews];
 }
-
 - (void)tapContentView:(UITapGestureRecognizer *)tap{
     if (_tapContentViewBlock) {
         _tapContentViewBlock();

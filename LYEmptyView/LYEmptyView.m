@@ -109,7 +109,7 @@
         contentHeight = self.customView.ly_maxY;
     }
     
-    ///设置坐标
+    ///设置frame
     [self setSubViewFrame];
 }
 
@@ -158,12 +158,13 @@
     
     CGFloat imgViewWidth = img.size.width;
     CGFloat imgViewHeight = img.size.height;
-    if (self.imageSize.width && self.imageSize.height) {
-        if (imgViewWidth > imgViewHeight) {
+    
+    if (self.imageSize.width && self.imageSize.height) {//设置了宽高大小
+        if (imgViewWidth > imgViewHeight) {//以宽为基准，按比例缩放高度
             imgViewHeight = (imgViewHeight / imgViewWidth) * self.imageSize.width;
             imgViewWidth = self.imageSize.width;
         
-        }else{
+        }else{//以高为基准，按比例缩放宽度
             imgViewWidth = (imgViewWidth / imgViewHeight) * self.imageSize.height;
             imgViewHeight = self.imageSize.height;
         }
@@ -197,7 +198,8 @@
     CGFloat fontSize = font.pointSize;
     
     CGFloat maxHeight = self.detailLabMaxLines ? self.detailLabMaxLines * (fontSize + 5) : 2 * (fontSize + 5);//如果没有设置最大行数，默认设置为2行的高度
-    CGSize size = [self returnTextWidth:detailStr size:CGSizeMake(contentMaxWidth, maxHeight) font:font];
+    
+    CGSize size = [self returnTextWidth:detailStr size:CGSizeMake(contentMaxWidth, maxHeight) font:font];//计算得出label大小
     CGFloat width = size.width;
     CGFloat height = size.height;
     
@@ -219,13 +221,14 @@
     UIColor *borderColor = self.actionBtnBorderColor ? self.actionBtnBorderColor : [UIColor colorWithRed:0.8f green:0.8f blue:0.8f alpha:1];
     CGFloat borderWidth = self.actionBtnBorderWidth ? self.actionBtnBorderWidth : 0.0f;
     CGFloat cornerRadius = self.actionBtnCornerRadius ? self.actionBtnCornerRadius : 5.f;
-    
     CGFloat horiMargin = self.actionBtnHorizontalMargin ? self.actionBtnHorizontalMargin : kActionBtnHorizontalMargin;
     CGFloat height = self.actionBtnHeight ? self.actionBtnHeight : kActionBtnHeight;
-    CGSize textSize = [self returnTextWidth:btnTitle size:CGSizeMake(contentMaxWidth, fontSize) font:font];
+    CGSize textSize = [self returnTextWidth:btnTitle size:CGSizeMake(contentMaxWidth, fontSize) font:font];//计算得出title文字内容大小
     if (height < textSize.height) {
         height = textSize.height + 4;
     }
+    
+    //按钮的宽高
     CGFloat btnWidth = textSize.width + horiMargin * 2;
     CGFloat btnHeight = height;
     btnWidth = btnWidth > contentMaxWidth ? contentMaxWidth : btnWidth;
@@ -239,6 +242,7 @@
     self.actionButton.layer.borderWidth = borderWidth;
     self.actionButton.layer.cornerRadius = cornerRadius;
     
+    //添加事件
     if (target && action) {
         [self.actionButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
         [self.actionButton addTarget:self action:@selector(actionBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -458,8 +462,6 @@
         self.btnClickBlock();
     }
 }
-
-#pragma mark - ------------------ Private Method ------------------
 
 #pragma mark - ------------------ Help Method ------------------
 - (CGSize)returnTextWidth:(NSString *)text size:(CGSize)size font:(UIFont *)font{

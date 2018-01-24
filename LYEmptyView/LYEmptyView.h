@@ -26,12 +26,14 @@
 @property (nonatomic, assign) CGFloat  contentViewY;
 
 
+/////////////////////// image
 /**
  图片可设置固定大小 (default=图片实际大小)
  */
 @property (nonatomic, assign) CGSize   imageSize;
 
 
+/////////////////////// titleLab 相关
 /**
  标题字体, 大小default is 16.f
  */
@@ -42,6 +44,7 @@
 @property (nonatomic, strong) UIColor  *titleLabTextColor;
 
 
+/////////////////////// detailLab 相关
 /**
  详细描述字体，大小default is 14.f
  */
@@ -56,7 +59,7 @@
 @property (nonatomic, strong) UIColor  *detailLabTextColor;
 
 
-///Button
+/////////////////////// Button 相关
 /**
  按钮字体, 大小default is 14.f
  */

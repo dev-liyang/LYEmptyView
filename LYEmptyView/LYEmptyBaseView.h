@@ -3,7 +3,7 @@
 //  LYEmptyViewDemo
 //
 //  Created by liyang on 2017/5/5.
-//  Copyright © 2017年 waiyanxunfei. All rights reserved.
+//  Copyright © 2017年 liyang. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -40,9 +40,13 @@ typedef void (^LYActionTapBlock)();
  */
 @property (nonatomic, assign) BOOL autoShowEmptyView;
 
+///初始化配置
+
 - (void)prepare;
 
+///重置Subviews
 - (void)setupSubviews;
+
 
 /**
  构造方法1 - 创建emptyView
@@ -53,10 +57,14 @@ typedef void (^LYActionTapBlock)();
  @param btnTitleStr 按钮的名称
  @param target      响应的对象
  @param action      按钮点击事件
- 
  @return 返回一个emptyView
  */
-+ (instancetype)emptyActionViewWithImageStr:(NSString *)imageStr titleStr:(NSString *)titleStr detailStr:(NSString *)detailStr btnTitleStr:(NSString *)btnTitleStr target:(id)target action:(SEL)action;
++ (instancetype)emptyActionViewWithImageStr:(NSString *)imageStr
+                                   titleStr:(NSString *)titleStr
+                                  detailStr:(NSString *)detailStr
+                                btnTitleStr:(NSString *)btnTitleStr
+                                     target:(id)target
+                                     action:(SEL)action;
 
 /**
  构造方法2 - 创建emptyView
@@ -68,7 +76,11 @@ typedef void (^LYActionTapBlock)();
  @param btnClickBlock  按钮点击事件回调
  @return 返回一个emptyView
  */
-+ (instancetype)emptyActionViewWithImageStr:(NSString *)imageStr titleStr:(NSString *)titleStr detailStr:(NSString *)detailStr btnTitleStr:(NSString *)btnTitleStr btnClickBlock:(LYActionTapBlock)btnClickBlock;
++ (instancetype)emptyActionViewWithImageStr:(NSString *)imageStr
+                                   titleStr:(NSString *)titleStr
+                                  detailStr:(NSString *)detailStr
+                                btnTitleStr:(NSString *)btnTitleStr
+                              btnClickBlock:(LYActionTapBlock)btnClickBlock;
 
 /**
  构造方法3 - 创建emptyView
@@ -78,16 +90,17 @@ typedef void (^LYActionTapBlock)();
  @param detailStr     详细描述
  @return 返回一个没有点击事件的emptyView
  */
-+ (instancetype)emptyViewWithImageStr:(NSString *)imageStr titleStr:(NSString *)titleStr detailStr:(NSString *)detailStr;
++ (instancetype)emptyViewWithImageStr:(NSString *)imageStr
+                             titleStr:(NSString *)titleStr
+                            detailStr:(NSString *)detailStr;
 
 /**
  构造方法4 - 创建一个自定义的emptyView
-
+ 
  @param customView 自定义view
  @return 返回一个自定义内容的emptyView
  */
 + (instancetype)emptyViewWithCustomView:(UIView *)customView;
-
 
 
 @end

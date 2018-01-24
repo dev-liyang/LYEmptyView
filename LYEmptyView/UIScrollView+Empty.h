@@ -12,9 +12,16 @@
 
 @interface UIScrollView (Empty)
 
+/**
+   空页面占位图控件
+ */
 @property (nonatomic, strong) LYEmptyView *ly_emptyView;
 
-/******* 使用下面的四个方法最好将EmptyView的autoShowEmptyView值置为NO，关闭自动显隐，以保证不受自动显隐的影响 ****/
+///////////////////////
+///////////////////////
+//使用下面的四个方法请将EmptyView的autoShowEmptyView值置为NO，关闭自动显隐，以保证不受自动显隐的影响
+///////////////////////
+///////////////////////
 
 /**
    一般用于开始请求网络时调用，ly_startLoading调用时会暂时隐藏emptyView

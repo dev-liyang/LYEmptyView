@@ -10,6 +10,15 @@
 #import <objc/runtime.h>
 #import "LYEmptyView.h"
 
+@implementation NSObject (MJRefresh)
+
++ (void)exchangeInstanceMethod1:(SEL)method1 method2:(SEL)method2
+{
+    method_exchangeImplementations(class_getInstanceMethod(self, method1), class_getInstanceMethod(self, method2));
+}
+
+@end
+
 @implementation UIScrollView (Empty)
 
 #pragma mark - Setter/Getter
@@ -68,7 +77,7 @@ static char kEmptyViewKey;
         self.ly_emptyView.hidden = YES;
         return;
     }
-
+    
     [self ly_showEmptyView];
 }
 - (void)hide{
@@ -77,7 +86,7 @@ static char kEmptyViewKey;
         self.ly_emptyView.hidden = YES;
         return;
     }
-
+    
     [self ly_hideEmptyView];
 }
 
@@ -110,28 +119,15 @@ static char kEmptyViewKey;
 @implementation UITableView (Empty)
 + (void)load{
     
-    Method reloadData = class_getInstanceMethod(self, @selector(reloadData));
-    Method ly_reloadData = class_getInstanceMethod(self, @selector(ly_reloadData));
-    method_exchangeImplementations(reloadData, ly_reloadData);
+    [self exchangeInstanceMethod1:@selector(reloadData) method2:@selector(ly_reloadData)];
     
     ///section
-    Method insertSections = class_getInstanceMethod(self, @selector(insertSections:withRowAnimation:));
-    Method ly_insertSections = class_getInstanceMethod(self, @selector(ly_insertSections:withRowAnimation:));
-    method_exchangeImplementations(insertSections, ly_insertSections);
-    
-    Method deleteSections = class_getInstanceMethod(self, @selector(deleteSections:withRowAnimation:));
-    Method ly_deleteSections = class_getInstanceMethod(self, @selector(ly_deleteSections:withRowAnimation:));
-    method_exchangeImplementations(deleteSections, ly_deleteSections);
+    [self exchangeInstanceMethod1:@selector(insertSections:withRowAnimation:) method2:@selector(ly_insertSections:withRowAnimation:)];
+    [self exchangeInstanceMethod1:@selector(deleteSections:withRowAnimation:) method2:@selector(ly_deleteSections:withRowAnimation:)];
     
     ///row
-    Method insertRowsAtIndexPaths = class_getInstanceMethod(self, @selector(insertRowsAtIndexPaths:withRowAnimation:));
-    Method ly_insertRowsAtIndexPaths = class_getInstanceMethod(self, @selector(ly_insertRowsAtIndexPaths:withRowAnimation:));
-    method_exchangeImplementations(insertRowsAtIndexPaths, ly_insertRowsAtIndexPaths);
-    
-    Method deleteRowsAtIndexPaths = class_getInstanceMethod(self, @selector(deleteRowsAtIndexPaths:withRowAnimation:));
-    Method ly_deleteRowsAtIndexPaths = class_getInstanceMethod(self, @selector(ly_deleteRowsAtIndexPaths:withRowAnimation:));
-    method_exchangeImplementations(deleteRowsAtIndexPaths, ly_deleteRowsAtIndexPaths);
-    
+    [self exchangeInstanceMethod1:@selector(insertRowsAtIndexPaths:withRowAnimation:) method2:@selector(ly_insertRowsAtIndexPaths:withRowAnimation:)];
+    [self exchangeInstanceMethod1:@selector(deleteRowsAtIndexPaths:withRowAnimation:) method2:@selector(ly_deleteRowsAtIndexPaths:withRowAnimation:)];
 }
 - (void)ly_reloadData{
     [self ly_reloadData];
@@ -163,27 +159,15 @@ static char kEmptyViewKey;
 @implementation UICollectionView (Empty)
 + (void)load{
     
-    Method reloadData = class_getInstanceMethod(self, @selector(reloadData));
-    Method ly_reloadData = class_getInstanceMethod(self, @selector(ly_reloadData));
-    method_exchangeImplementations(reloadData, ly_reloadData);
+    [self exchangeInstanceMethod1:@selector(reloadData) method2:@selector(ly_reloadData)];
     
     ///section
-    Method insertSections = class_getInstanceMethod(self, @selector(insertSections:));
-    Method ly_insertSections = class_getInstanceMethod(self, @selector(ly_insertSections:));
-    method_exchangeImplementations(insertSections, ly_insertSections);
-    
-    Method deleteSections = class_getInstanceMethod(self, @selector(deleteSections:));
-    Method ly_deleteSections = class_getInstanceMethod(self, @selector(ly_deleteSections:));
-    method_exchangeImplementations(deleteSections, ly_deleteSections);
+    [self exchangeInstanceMethod1:@selector(insertSections:) method2:@selector(ly_insertSections:)];
+    [self exchangeInstanceMethod1:@selector(deleteSections:) method2:@selector(ly_deleteSections:)];
     
     ///item
-    Method insertItemsAtIndexPaths = class_getInstanceMethod(self, @selector(insertItemsAtIndexPaths:));
-    Method ly_insertItemsAtIndexPaths = class_getInstanceMethod(self, @selector(ly_insertItemsAtIndexPaths:));
-    method_exchangeImplementations(insertItemsAtIndexPaths, ly_insertItemsAtIndexPaths);
-    
-    Method deleteItemsAtIndexPaths = class_getInstanceMethod(self, @selector(deleteItemsAtIndexPaths:));
-    Method ly_deleteItemsAtIndexPaths = class_getInstanceMethod(self, @selector(ly_deleteItemsAtIndexPaths:));
-    method_exchangeImplementations(deleteItemsAtIndexPaths, ly_deleteItemsAtIndexPaths);
+    [self exchangeInstanceMethod1:@selector(insertItemsAtIndexPaths:) method2:@selector(ly_insertItemsAtIndexPaths:)];
+    [self exchangeInstanceMethod1:@selector(deleteItemsAtIndexPaths:) method2:@selector(ly_deleteItemsAtIndexPaths:)];
     
 }
 - (void)ly_reloadData{
@@ -209,5 +193,3 @@ static char kEmptyViewKey;
     [self getDataAndSet];
 }
 @end
-
-

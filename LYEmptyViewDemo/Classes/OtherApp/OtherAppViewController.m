@@ -62,7 +62,7 @@
                                                              titleStr:_dataDic[@"titleStr"]
                                                             detailStr:_dataDic[@"detailStr"]
                                                           btnTitleStr:_dataDic[@"btnTitle"]
-                                                        btnClickBlock:^(NSString *param){
+                                                        btnClickBlock:^(){
         [weakSelf addDataClick:nil];
     }];
     

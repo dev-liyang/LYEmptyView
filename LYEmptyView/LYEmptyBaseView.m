@@ -67,7 +67,7 @@
     
     return emptyView;
 }
-+ (instancetype)emptyActionViewWithImageStr:(NSString *)imageStr titleStr:(NSString *)titleStr detailStr:(NSString *)detailStr btnTitleStr:(NSString *)btnTitleStr btnClickBlock:(void (^)(NSString *))btnClickBlock{
++ (instancetype)emptyActionViewWithImageStr:(NSString *)imageStr titleStr:(NSString *)titleStr detailStr:(NSString *)detailStr btnTitleStr:(NSString *)btnTitleStr btnClickBlock:(LYActionTapBlock)btnClickBlock{
     
     LYEmptyBaseView *emptyView = [[self alloc] init];
     
@@ -112,7 +112,7 @@
     }
 }
 
-- (void)creatEmptyViewWithImageStr:(NSString *)imageStr titleStr:(NSString *)titleStr detailStr:(NSString *)detailStr btnTitleStr:(NSString *)btnTitleStr btnClickBlock:(void (^)(NSString *))btnClickBlock{
+- (void)creatEmptyViewWithImageStr:(NSString *)imageStr titleStr:(NSString *)titleStr detailStr:(NSString *)detailStr btnTitleStr:(NSString *)btnTitleStr btnClickBlock:(LYActionTapBlock)btnClickBlock{
     
     _imageStr = imageStr;
     _titleStr = titleStr;
@@ -160,7 +160,7 @@
 }
 - (void)tapContentView:(UITapGestureRecognizer *)tap{
     if (_tapContentViewBlock) {
-        _tapContentViewBlock(@"");
+        _tapContentViewBlock();
     }
 }
 

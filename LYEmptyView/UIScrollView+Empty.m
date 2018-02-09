@@ -62,6 +62,10 @@ static char kEmptyViewKey;
 }
 
 - (void)getDataAndSet{
+    //没有设置emptyView的，直接返回
+    if (!self.ly_emptyView) {
+        return;
+    }
     
     if ([self totalDataCount] == 0) {
         [self show];

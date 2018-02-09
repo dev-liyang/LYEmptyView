@@ -12,7 +12,7 @@
 /** 
  事件回调
  */
-typedef void (^LYActionTapBlock)();
+typedef void (^LYActionTapBlock)(void);
 
 @interface LYEmptyBaseView : UIView
 

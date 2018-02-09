@@ -67,7 +67,7 @@
     
     //emptyView内容上的点击事件监听
     __weak typeof(self)weakSelf = self;
-    [self.tableView.ly_emptyView setTapContentViewBlock:^{
+    [self.tableView.ly_emptyView setTapContentViewBlock:^(NSString *param){
         [weakSelf requestData];
     }];
 }

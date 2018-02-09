@@ -212,7 +212,7 @@
     contentHeight = self.detailLabel.ly_maxY;
 }
 
-- (void)setupActionBtn:(NSString *)btnTitle target:(id)target action:(SEL)action btnClickBlock:(LYActionTapBlock)btnClickBlock{
+- (void)setupActionBtn:(NSString *)btnTitle target:(id)target action:(SEL)action btnClickBlock:(void (^)(NSString *))btnClickBlock{
     
     UIFont *font = self.actionBtnFont.pointSize ? self.actionBtnFont : kActionBtnFont;
     CGFloat fontSize = font.pointSize;
@@ -459,7 +459,7 @@
 #pragma mark - ------------------ Event Method ------------------
 - (void)actionBtnClick:(UIButton *)sender{
     if (self.btnClickBlock) {
-        self.btnClickBlock();
+        self.btnClickBlock(@"");
     }
 }
 

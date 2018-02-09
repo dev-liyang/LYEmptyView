@@ -12,7 +12,7 @@
 /** 
  事件回调
  */
-typedef void (^LYActionTapBlock)(void);
+//typedef void (^LYActionTapBlock)(NSString *param);
 
 @interface LYEmptyBaseView : UIView
 
@@ -26,12 +26,14 @@ typedef void (^LYActionTapBlock)(void);
 @property (nonatomic, copy) NSString *titleStr;
 @property (nonatomic, copy) NSString *detailStr;
 @property (nonatomic, copy) NSString *btnTitleStr;
-@property (nonatomic, copy) LYActionTapBlock tapContentViewBlock;
+//@property (nonatomic, copy) LYActionTapBlock tapContentViewBlock;
+@property (nonatomic, copy) void (^tapContentViewBlock)(NSString *param) ;
 
 /////////属性传递 (这些属性只用来传递，修改无效)
 @property (nonatomic, weak, readonly)   id actionBtnTarget;
 @property (nonatomic,assign,readonly)   SEL actionBtnAction;
-@property (nonatomic, copy, readonly)   LYActionTapBlock btnClickBlock;
+//@property (nonatomic, copy, readonly)   LYActionTapBlock btnClickBlock;
+@property (nonatomic, copy) void (^btnClickBlock)(NSString *param) ;
 @property (nonatomic,strong,readonly)   UIView *customView;
 
 
@@ -80,7 +82,7 @@ typedef void (^LYActionTapBlock)(void);
                                    titleStr:(NSString *)titleStr
                                   detailStr:(NSString *)detailStr
                                 btnTitleStr:(NSString *)btnTitleStr
-                              btnClickBlock:(LYActionTapBlock)btnClickBlock;
+                              btnClickBlock:(void (^)(NSString *param))btnClickBlock;
 
 /**
  构造方法3 - 创建emptyView

@@ -1,6 +1,8 @@
 # LYEmptyView
 不需要遵循协议，不需要设置代理，不需要实现代理方法，只需这一句代码，就可为一个UITableViwe/UICollectionView集成空白页面占位图。<br>`self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];`
 
+注:UIScrollView没有DataSource较特殊，调用示例请移步示例8
+
 | 特点  | 描述 |
 | ---------- | -----------|
 | 与项目完全解耦 | 在需要集成的界面中加入一行代码即可集成，与原代码没有一点耦合度  |
@@ -230,7 +232,7 @@ self.tableView.ly_emptyView.autoShowEmptyView = NO;
 
 ### 8-scrollView调用示例
 因scrollView没有DataSource，代码无法判断scrollView上有无数据，所以scrollView想要实现占位图，
-还需通过两个方法来手动控制emptyView的显示和隐藏。
+还需通过两个方法来手动控制emptyView的显示和隐藏。(scrollView也只能通过下面的方式实现占位图)
 以下是调用示例
 ```Objective-C
 //1.先设置样式
@@ -240,6 +242,10 @@ self.scrollView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 //3.隐藏emptyView
 [self.scrollView ly_hideEmptyView];
 ```
+
+## 更新记录
+### 2018-02-09 (pod V1.0.2)
+  解决只是在导入本框架的情况下，导致UIScrollView上的内容不显示的bug
 
 
 

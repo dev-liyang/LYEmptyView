@@ -47,6 +47,8 @@
 }
 
 - (void)setupUI{
+    CGFloat tabbarH = self.tabBarController.tabBar.frame.size.height;
+    self.tableView.frame = CGRectMake(0, kStatusBarHeight + 44, kMainScreenWidth, kMainScreenHeight - kStatusBarHeight - 44 - tabbarH);
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = MainColor(240, 240, 240);
@@ -55,11 +57,9 @@
     }
     
     DemoEmptyView *emptyView = [DemoEmptyView diyEmptyView];
-    NSLog(@"DemoEmptyView:%@",emptyView);
+    emptyView.contentViewOffset = 50;
+    emptyView.imageSize = CGSizeMake(80, 80);
     self.tableView.ly_emptyView = emptyView;
-    self.tableView.ly_emptyView.imageSize = CGSizeMake(80, 80);
-    self.tableView.ly_emptyView.contentViewOffset = 50;
-//    self.tableView.ly_emptyView.contentViewY = kStatusBarHeight + 44 + 114 + 50;
 }
 
 #pragma mark - -------------- TableView DataSource -----------------
@@ -73,13 +73,10 @@
     return 52;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return kStatusBarHeight + 44 + 10;
-    }
-    return 10;
+    return 40;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 10;
+    return 0.01;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -93,6 +90,14 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, 40)];
+    label.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1];
+    label.text = [NSString stringWithFormat:@"组头-%ld", section];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor redColor];
+    return label;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -131,6 +136,7 @@
 }
 
 - (void)setEmpty{
+    //需要自己去判断有无数据，从而根据有无情况进行显示
     if (self.dataArray.count >= 2) {
         if ([self.dataArray[1] count]) {
             [self.tableView ly_hideEmptyView];

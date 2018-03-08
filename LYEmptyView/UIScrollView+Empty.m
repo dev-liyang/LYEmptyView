@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 #import "LYEmptyView.h"
 
-@implementation NSObject (MJRefresh)
+@implementation NSObject (Empty)
 
 + (void)exchangeInstanceMethod1:(SEL)method1 method2:(SEL)method2
 {
@@ -18,6 +18,8 @@
 }
 
 @end
+
+#pragma mark - ------------------ UIScrollView ------------------
 
 @implementation UIScrollView (Empty)
 
@@ -120,6 +122,8 @@ static char kEmptyViewKey;
 
 @end
 
+#pragma mark - ------------------ UITableView ------------------
+
 @implementation UITableView (Empty)
 + (void)load{
     
@@ -159,6 +163,8 @@ static char kEmptyViewKey;
 
 
 @end
+
+#pragma mark - ------------------ UICollectionView ------------------
 
 @implementation UICollectionView (Empty)
 + (void)load{

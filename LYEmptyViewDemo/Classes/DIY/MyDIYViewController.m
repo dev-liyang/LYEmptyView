@@ -53,7 +53,12 @@
     
     if (![self.dataDic[@"title"] isEqualToString:@"DIY6"]) {
         
-        self.tableView.ly_emptyView = [MyDIYEmpty emptyActionViewWithImageStr:_dataDic[@"image"] titleStr:_dataDic[@"titleStr"] detailStr:_dataDic[@"detailStr"] btnTitleStr:_dataDic[@"btnTitle"] target:self action:@selector(addDataClick:)];
+        self.tableView.ly_emptyView = [MyDIYEmpty emptyActionViewWithImageStr:_dataDic[@"image"]
+                                                                     titleStr:_dataDic[@"titleStr"]
+                                                                    detailStr:_dataDic[@"detailStr"]
+                                                                  btnTitleStr:_dataDic[@"btnTitle"]
+                                                                       target:self
+                                                                       action:@selector(addDataClick:)];
         
     }else{//自定义view
 

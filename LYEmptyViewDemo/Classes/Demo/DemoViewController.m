@@ -134,8 +134,8 @@
         [self.dataArray removeObjectAtIndex:0];
         [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
         
-        //    [self.dataArray removeAllObjects];
-        //    [self.tableView reloadData];
+    //    [self.dataArray removeAllObjects];
+    //    [self.tableView reloadData];
     }
     
 }

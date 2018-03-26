@@ -150,19 +150,19 @@
 
 -(void)setImageStr:(NSString *)imageStr{
     _imageStr = imageStr;
-    [self setupSubviews];
+    [self layoutSubviews];
 }
 - (void)setTitleStr:(NSString *)titleStr{
     _titleStr = titleStr;
-    [self setupSubviews];
+    [self layoutSubviews];
 }
 - (void)setDetailStr:(NSString *)detailStr{
     _detailStr = detailStr;
-    [self setupSubviews];
+    [self layoutSubviews];
 }
 - (void)setBtnTitleStr:(NSString *)btnTitleStr{
     _btnTitleStr = btnTitleStr;
-    [self setupSubviews];
+    [self layoutSubviews];
 }
 - (void)tapContentView:(UITapGestureRecognizer *)tap{
     if (_tapContentViewBlock) {

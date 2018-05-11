@@ -53,7 +53,9 @@
     }
     
     ///设置emptyView
-    self.tableView.ly_emptyView = [DemoEmptyView diyEmptyActionViewWithTarget:self action:@selector(getData:)];
+    DemoEmptyView *empty = [DemoEmptyView diyEmptyActionViewWithTarget:self action:@selector(getData:)];
+//    empty.autoShowEmptyView = NO;//框架默认自动显隐，初始化tableView没有数据时会显示emptyView，故此处应关闭自动显隐，如进行了二次封装，此处也可不写
+    self.tableView.ly_emptyView = empty;
 
 }
 

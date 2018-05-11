@@ -32,6 +32,10 @@
     
     self.autoShowEmptyView = NO;
     
+    self.titleLabTextColor = MainColor(180, 30, 50);
+    self.titleLabFont = [UIFont systemFontOfSize:18];
+    
+    self.detailLabTextColor = MainColor(80, 80, 80);
 }
 
 @end

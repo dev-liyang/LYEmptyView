@@ -55,14 +55,16 @@
 
 - (void)loadData{
     
-    NSArray *array = @[@{@"name" : @"DemoViewController",
-                          @"title" : @"Demo"},
+    NSArray *array = @[@{@"name" : @"Demo1ViewController",
+                          @"title" : @"Demo1 一行代码集成占位图"},
                         @{@"name" : @"Demo2ViewController",
-                          @"title" : @"Demo2"},
+                          @"title" : @"Demo2 延迟显示占位图"},
                         @{@"name" : @"Demo3ViewController",
-                          @"title" : @"Demo3"},
-                        @{@"name" : @"Demo4ViewController",
-                          @"title" : @"Demo4"}];
+                          @"title" : @"Demo3 随意切换占位图样式"},
+                       @{@"name" : @"Demo4ViewController",
+                         @"title" : @"Demo4 手动控制占位图显示隐藏"},
+                       @{@"name" : @"Demo5ViewController",
+                         @"title" : @"Demo5 其他View集成占位图方式"}];
     
     NSArray *array2 = @[@{@"icon" : @"qq",
                          @"title" : @"QQ"},

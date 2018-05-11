@@ -23,12 +23,12 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 
-    self.navigationController.navigationBar.barTintColor = MainColor(240, 240, 240);
+    self.navigationController.navigationBar.barTintColor = MainColor(247, 247, 247);
     self.navigationController.navigationBar.tintColor = MainColor(70, 70, 70);
 
     [self.navigationController.navigationBar setTitleTextAttributes: @{NSFontAttributeName:[UIFont boldSystemFontOfSize:17],NSForegroundColorAttributeName:MainColor(70, 70, 70)}];
-
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -51,7 +51,7 @@
     self.tableView.frame = CGRectMake(0, kStatusBarHeight + 44, kMainScreenWidth, kMainScreenHeight - kStatusBarHeight - 44 - tabbarH);
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.backgroundColor = MainColor(240, 240, 240);
+    self.tableView.backgroundColor = MainColor(247, 247, 247);
     if (@available(iOS 11.0, *)) {
         self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }

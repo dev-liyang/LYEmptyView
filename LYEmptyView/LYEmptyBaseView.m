@@ -37,7 +37,7 @@
     
     UIView *view = self.superview;
     //不是UIScrollView，不做操作
-    if (view && [view isKindOfClass:[UIScrollView class]]){
+    if (view && [view isKindOfClass:[UIView class]]){
         self.ly_width = view.ly_width;
         self.ly_height = view.ly_height;
     }
@@ -53,7 +53,7 @@
     [super willMoveToSuperview:newSuperview];
     
     //不是UIScrollView，不做操作
-    if (newSuperview && ![newSuperview isKindOfClass:[UIScrollView class]]) return;
+    if (newSuperview && ![newSuperview isKindOfClass:[UIView class]]) return;
     
     if (newSuperview) {
         self.ly_width = newSuperview.ly_width;

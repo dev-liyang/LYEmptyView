@@ -1,5 +1,5 @@
 //
-//  DemoViewController.h
+//  Demo1ViewController.h
 //  LYEmptyViewDemo
 //
 //  Created by liyang on 2017/7/28.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DemoViewController : UIViewController
+@interface Demo1ViewController : UIViewController
 
 @end

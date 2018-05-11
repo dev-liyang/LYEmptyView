@@ -1,21 +1,21 @@
 //
-//  DemoViewController.m
+//  Demo1ViewController.m
 //  LYEmptyViewDemo
 //
 //  Created by liyang on 2017/7/28.
 //  Copyright © 2017年 liyang. All rights reserved.
 //
 
-#import "DemoViewController.h"
+#import "Demo1ViewController.h"
 
-@interface DemoViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface Demo1ViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
-@implementation DemoViewController
+@implementation Demo1ViewController
 {
     NSInteger IndexNumber;
 }

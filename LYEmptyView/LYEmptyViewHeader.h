@@ -10,7 +10,6 @@
 #define LYEmptyViewHeader_h
 
 #import "LYEmptyView.h"
-#import "UIScrollView+Empty.h"
-
+#import "UIView+Empty.h"
 
 #endif /* LYEmptyViewHeader_h */

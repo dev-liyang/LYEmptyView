@@ -41,7 +41,6 @@ typedef void (^LYActionTapBlock)(void);
 @property (nonatomic, assign) BOOL autoShowEmptyView;
 
 ///初始化配置
-
 - (void)prepare;
 
 ///重置Subviews

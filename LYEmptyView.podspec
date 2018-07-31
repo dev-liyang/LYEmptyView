@@ -2,11 +2,11 @@ Pod::Spec.new do |s|
 
     s.name         = 'LYEmptyView'
 
-    s.version      = '1.1.0'
+    s.version      = '1.2.0'
 
     s.summary      = 'so esay integrate empty content view'
 
-    s.homepage     = 'https://github.com/yangli-dev/LYEmptyView'
+    s.homepage     = 'https://github.com/dev-liyang/LYEmptyView'
 
     s.license      = 'MIT'
 

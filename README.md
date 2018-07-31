@@ -1,7 +1,29 @@
 # LYEmptyView
 不需要遵循协议，不需要设置代理，不需要实现代理方法，只需这一句代码，就可为一个UITableViwe/UICollectionView集成空白页面占位图。<br>`self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];`
 
-#### 注:除UITableViwe/UICollectionView外，这些View(包括UIScrollView)没有DataSource，代码层面无法判断有无数据，需手动管理显示隐藏，调用示例请移步示例8
+#### 注意点:
+#### 1.除UITableViwe/UICollectionView外，这些View(包括UIScrollView)没有DataSource，代码层面无法判断有无数据，需手动管理显示隐藏，调用示例请移步示例8
+#### 2.因在1.1.0版本开始加入普通view都可设置占位图，故在方法调用上可能有些歧义，请照如下调用
+```Objective-C
+//这句没毛病
+self.view.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
+
+//显示占位图
+//错误: [self.view.ly_emptyView ly_showEmptyView];
+//正确: [self.view ly_showEmptyView];
+
+//隐藏占位图
+//错误: [self.view.ly_emptyView ly_hideEmptyView];
+//正确: [self.view ly_hideEmptyView];
+
+//网络请求开始
+//错误: [self.tableView.ly_emptyView ly_startLoading];
+//正确: [self.tableView ly_startLoading];
+
+//刷新UI时调用（保证在刷新UI后调用）
+//错误: [self.tableView.ly_emptyView ly_endLoading];
+//正确: [self.tableView ly_endLoading];
+```
 
 | 特点  | 描述 |
 | ---------- | -----------|
@@ -22,7 +44,8 @@
     * [5-二次封装](https://github.com/dev-liyang/LYEmptyView#5-二次封装)<br>
     * [6-延迟显示emptyView](https://github.com/dev-liyang/LYEmptyView#6-延迟显示emptyView)<br>
     * [7-特殊需求，手动控制emptyView的显示隐藏](https://github.com/dev-liyang/LYEmptyView#7-特殊需求，手动控制emptyView的显示隐藏)<br>
-    * [8-scrollView调用示例](https://github.com/dev-liyang/LYEmptyView#8-scrollView调用示例)<br>
+    * [8-普通view调用示例](https://github.com/dev-liyang/LYEmptyView#8-普通view调用示例)<br>
+    * [9-占位图完全覆盖父视图](https://github.com/dev-liyang/LYEmptyView#9-占位图完全覆盖父视图)<br>
 
 ## 一-效果展示
 
@@ -230,21 +253,32 @@ self.tableView.ly_emptyView.autoShowEmptyView = NO;
 
 ![](https://github.com/dev-liyang/LYEmptyView/blob/master/images/example7.gif)
 
-### 8-scrollView调用示例
-普通View的调用和scrollView一致
-因scrollView没有DataSource，代码层面无法判断scrollView上有无数据，所以scrollView想要实现占位图，
+### 8-普通view调用示例
+因普通view(包括scrollView)没有DataSource，代码层面无法判断scrollView上有无数据，所以scrollView想要实现占位图，
 还需通过两个方法来手动控制emptyView的显示和隐藏。
 以下是调用示例
 ```Objective-C
 //1.先设置样式
-self.scrollView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
+self.view.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 //2.显示emptyView
-[self.scrollView ly_showEmptyView];
+[self.view ly_showEmptyView];
 //3.隐藏emptyView
-[self.scrollView ly_hideEmptyView];
+[self.view ly_hideEmptyView];
+```
+
+### 9-占位图完全覆盖父视图
+每个项目需求不同，有的占位图内容多大，占位图就多大，这种情况是默认的，不用设置属性。而有的占位图想要和父视图一样大，以达到覆盖住父视图的目的，这种情况下将LYEmptyView的emptyViewIsCompleteCoverSuperView属性值设置为YES即可。
+```Objective-C
+DemoEmptyView *emptyView = [DemoEmptyView diyEmptyView];
+emptyView.emptyViewIsCompleteCoverSuperView = YES;//完全覆盖父视图，背景色默认为浅白色，可自行设置
+//emptyView.backgroundColor = [UIColor redColor];//自己设置背景色为红色，此设置也可封装到公共的地方（DemoEmptyView），就不用每次都单独设置了
+self.tableView.ly_emptyView = emptyView;
 ```
 
 ## 更新记录
+
+### 2018-07-31 (pod V1.2.0)
+* 新增属性：emptyViewIsCompleteCoverSuperView, 占位图是否完全覆盖父视图
 
 ### 2018-05-11 (pod V1.1.0)
 * 新增普通View可设置占位图，实现所有的View都能集成占位图

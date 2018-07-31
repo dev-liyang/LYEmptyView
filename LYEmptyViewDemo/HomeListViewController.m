@@ -64,7 +64,9 @@
                        @{@"name" : @"Demo4ViewController",
                          @"title" : @"Demo4 手动控制占位图显示隐藏"},
                        @{@"name" : @"Demo5ViewController",
-                         @"title" : @"Demo5 其他View集成占位图方式"}];
+                         @"title" : @"Demo5 其他View集成占位图方式"},
+                       @{@"name" : @"Demo6ViewController",
+                         @"title" : @"Demo6 占位图完全覆盖父视图"}];
     
     NSArray *array2 = @[@{@"icon" : @"qq",
                          @"title" : @"QQ"},

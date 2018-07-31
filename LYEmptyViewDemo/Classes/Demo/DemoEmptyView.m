@@ -30,6 +30,8 @@
 - (void)prepare{
     [super prepare];
     
+//    self.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1];
+    
     self.autoShowEmptyView = NO;
     
     self.titleLabTextColor = MainColor(180, 30, 50);

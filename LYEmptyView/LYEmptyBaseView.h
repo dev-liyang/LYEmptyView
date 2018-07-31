@@ -17,9 +17,9 @@ typedef void (^LYActionTapBlock)(void);
 @interface LYEmptyBaseView : UIView
 
 /**
- 内容物背景视图
+ 是否自动显隐EmptyView, default=YES
  */
-@property (nonatomic,strong,readonly)   UIView  *contentView;
+@property (nonatomic, assign) BOOL autoShowEmptyView;
 
 /////////属性传递(可修改)
 @property (nonatomic, copy) NSString *imageStr;
@@ -29,16 +29,12 @@ typedef void (^LYActionTapBlock)(void);
 @property (nonatomic, copy) LYActionTapBlock tapContentViewBlock;
 
 /////////属性传递 (这些属性只用来传递，修改无效)
-@property (nonatomic, weak, readonly)   id actionBtnTarget;
-@property (nonatomic,assign,readonly)   SEL actionBtnAction;
-@property (nonatomic, copy, readonly)   LYActionTapBlock btnClickBlock;
-@property (nonatomic,strong,readonly)   UIView *customView;
+@property (nonatomic,strong,readonly) UIView *contentView;
+@property (nonatomic, weak, readonly) id actionBtnTarget;
+@property (nonatomic,assign,readonly) SEL actionBtnAction;
+@property (nonatomic, copy, readonly) LYActionTapBlock btnClickBlock;
+@property (nonatomic,strong,readonly) UIView *customView;
 
-
-/**
- 是否自动显隐EmptyView, default=YES
- */
-@property (nonatomic, assign) BOOL autoShowEmptyView;
 
 ///初始化配置
 - (void)prepare;

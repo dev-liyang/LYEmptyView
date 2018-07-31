@@ -33,6 +33,7 @@ static char kEmptyViewKey;
             }
         }
         [self addSubview:self.ly_emptyView];
+        self.ly_emptyView.hidden = YES;//添加时默认隐藏
     }
 }
 - (LYEmptyView *)ly_emptyView{

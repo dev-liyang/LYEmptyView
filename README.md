@@ -257,4 +257,7 @@ self.scrollView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 * 解决只是在导入本框架的情况下，导致UIScrollView上的内容不显示的bug
 
 
-
+## 技术交流
+本人QQ:944801216<br>
+技术交流群:818290484<br>
+大家有任何的问题和建议，可以联系我，我一定尽力为大家解决问题，也可以进群和大家一起交流。

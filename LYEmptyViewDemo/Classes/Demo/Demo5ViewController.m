@@ -22,10 +22,10 @@
     
     self.view.ly_emptyView = [DemoEmptyView emptyViewWithImageStr:@"noData" titleStr:@"啥都没有" detailStr:@"直接为VC的View添加占位图"];
     
-//    //显示占位图
-//    [self.view ly_showEmptyView];
-//
-//    //隐藏占位图
+    //显示占位图
+    [self.view ly_showEmptyView];
+
+    //隐藏占位图
 //    [self.view ly_hideEmptyView];
 }
 

@@ -34,9 +34,9 @@ self.view.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 | 支持全部的刷新方法 | reload...、insert...、delete...等方法。你的项目中调用这些刷新方法时，该框架都会自动根据DataSource自动进行计算判断是否显示emptyView |
 
 # 目录
-* [ 一-效果展示 ](https://github.com/dev-liyang/LYEmptyView##一-效果展示)<br>
-* [ 二-集成方式 ](https://github.com/dev-liyang/LYEmptyView##二-集成方式)<br>
-* [ 三-使用参考示例 ](https://github.com/dev-liyang/LYEmptyView##三-使用参考示例)<br>
+* [一、效果展示](#效果展示)<br>
+* [二、集成方式](#集成方式)<br>
+* [三、使用参考示例](#使用参考示例)<br>
     * [1-一行代码集成空内容视图](https://github.com/dev-liyang/LYEmptyView###1-一行代码集成空内容视图)<br>
     * [2-自由选择空内容元素](https://github.com/dev-liyang/LYEmptyView#2-自由选择空内容元素)<br>
     * [3-自定义空内容元素](https://github.com/dev-liyang/LYEmptyView#3-自定义空内容元素)<br>
@@ -47,11 +47,11 @@ self.view.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
     * [8-普通view调用示例](https://github.com/dev-liyang/LYEmptyView###8-普通view调用示例)<br>
     * [9-占位图完全覆盖父视图](https://github.com/dev-liyang/LYEmptyView###9-占位图完全覆盖父视图)<br>
 
-## 一-效果展示
+## <a id="效果展示"></a>一、效果展示
 
 ![](https://github.com/dev-liyang/LYEmptyView/blob/master/images/ImitateOtherApp.png)
 
-## 二-集成方式
+## <a id="集成方式"></a>二、集成方式
 
 1.Cocoapods方式集成: `pod 'LYEmptyView'`<br>
 使用时导入头文件 `#import <LYEmptyView/LYEmptyViewHeader.h>`
@@ -60,7 +60,7 @@ self.view.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 使用时导入头文件：`#import "LYEmptyViewHeader.h"`
 
 
-## 三-使用参考示例
+## <a id="使用参考示例"></a>三、使用参考示例
 
 ### 1-一行代码集成空内容视图
 
@@ -276,6 +276,9 @@ self.tableView.ly_emptyView = emptyView;
 ```
 
 ## 更新记录
+
+### 2018-08-22 (pod V1.2.1)
+* 大神的建议，不要手动调用layoutSubviews。优化baseView里setter方法调用的重绘机制，使用setNeedsLayout更加优美
 
 ### 2018-07-31 (pod V1.2.0)
 * 新增属性：emptyViewIsCompleteCoverSuperView, 占位图是否完全覆盖父视图

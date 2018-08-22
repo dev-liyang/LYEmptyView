@@ -148,21 +148,21 @@
 
 #pragma mark - ------------------ Setter ------------------
 
--(void)setImageStr:(NSString *)imageStr{
+- (void)setImageStr:(NSString *)imageStr{
     _imageStr = imageStr;
-    [self layoutSubviews];
+    [self setNeedsLayout];
 }
 - (void)setTitleStr:(NSString *)titleStr{
     _titleStr = titleStr;
-    [self layoutSubviews];
+    [self setNeedsLayout];
 }
 - (void)setDetailStr:(NSString *)detailStr{
     _detailStr = detailStr;
-    [self layoutSubviews];
+    [self setNeedsLayout];
 }
 - (void)setBtnTitleStr:(NSString *)btnTitleStr{
     _btnTitleStr = btnTitleStr;
-    [self layoutSubviews];
+    [self setNeedsLayout];
 }
 - (void)tapContentView:(UITapGestureRecognizer *)tap{
     if (_tapContentViewBlock) {

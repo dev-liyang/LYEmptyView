@@ -67,6 +67,7 @@
     }else{
         if (_promptImageView) {
             [_promptImageView removeFromSuperview];
+            self.promptImageView = nil;
         }
     }
     
@@ -76,6 +77,7 @@
     }else{
         if (_titleLabel) {
             [_titleLabel removeFromSuperview];
+            self.titleLabel = nil;
         }
     }
     
@@ -85,6 +87,7 @@
     }else{
         if (_detailLabel) {
             [_detailLabel removeFromSuperview];
+            self.detailLabel = nil;
         }
     }
     
@@ -97,11 +100,13 @@
         }else{
             if (_actionButton) {
                 [_actionButton removeFromSuperview];
+                self.actionButton = nil;
             }
         }
     }else{
         if (_actionButton) {
             [_actionButton removeFromSuperview];
+            self.actionButton = nil;
         }
     }
     

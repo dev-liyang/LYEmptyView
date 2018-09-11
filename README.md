@@ -252,7 +252,7 @@ self.tableView.ly_emptyView.autoShowEmptyView = NO;
 ![](https://github.com/dev-liyang/LYEmptyView/blob/master/images/example7.gif)
 
 ### <a id="普通view调用示例"></a>8.普通view调用示例
-因普通view(包括scrollView)没有DataSource，代码层面无法判断scrollView上有无数据，所以scrollView想要实现占位图，
+因普通view(包括scrollView)没有DataSource，代码层面无法判断view上有无数据，所以view想要实现占位图，
 还需通过两个方法来手动控制emptyView的显示和隐藏。
 以下是调用示例
 ```Objective-C

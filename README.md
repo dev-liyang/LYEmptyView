@@ -37,15 +37,15 @@ self.view.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 * [一、效果展示](#效果展示)<br>
 * [二、集成方式](#集成方式)<br>
 * [三、使用参考示例](#使用参考示例)<br>
-    * [1-一行代码集成空内容视图](https://github.com/dev-liyang/LYEmptyView###1-一行代码集成空内容视图)<br>
-    * [2-自由选择空内容元素](https://github.com/dev-liyang/LYEmptyView#2-自由选择空内容元素)<br>
-    * [3-自定义空内容元素](https://github.com/dev-liyang/LYEmptyView#3-自定义空内容元素)<br>
-    * [4-自定义元素的UI样式](https://github.com/dev-liyang/LYEmptyView#4-自定义元素的UI样式)<br>
-    * [5-二次封装](https://github.com/dev-liyang/LYEmptyView#5-二次封装)<br>
-    * [6-延迟显示emptyView](https://github.com/dev-liyang/LYEmptyView#6-延迟显示emptyView)<br>
-    * [7-特殊需求，手动控制emptyView的显示隐藏](https://github.com/dev-liyang/LYEmptyView###7-特殊需求，手动控制emptyView的显示隐藏)<br>
-    * [8-普通view调用示例](https://github.com/dev-liyang/LYEmptyView###8-普通view调用示例)<br>
-    * [9-占位图完全覆盖父视图](https://github.com/dev-liyang/LYEmptyView###9-占位图完全覆盖父视图)<br>
+    * [1.一行代码集成空内容视图](#一行代码集成空内容视图)<br>
+    * [2.自由选择空内容元素](#自由选择空内容元素)<br>
+    * [3.自定义空内容元素](#自定义空内容元素)<br>
+    * [4.自定义元素的UI样式](#自定义元素的UI样式)<br>
+    * [5.二次封装](#二次封装)<br>
+    * [6.延迟显示emptyView](#延迟显示emptyView)<br>
+    * [7.特殊需求，手动控制emptyView的显示隐藏](#特殊需求，手动控制emptyView的显示隐藏)<br>
+    * [8.普通view调用示例](#普通view调用示例)<br>
+    * [9.占位图完全覆盖父视图](#占位图完全覆盖父视图)<br>
 
 ## <a id="效果展示"></a>一、效果展示
 
@@ -62,7 +62,7 @@ self.view.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 
 ## <a id="使用参考示例"></a>三、使用参考示例
 
-### 1-一行代码集成空内容视图
+### <a id="一行代码集成空内容视图"></a>1.一行代码集成空内容视图
 
 ```Objective-C
 //框架方法
@@ -82,7 +82,7 @@ self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 
 ![](https://github.com/dev-liyang/LYEmptyView/blob/master/images/example1.gif)
 
-### 2-自由选择空内容元素
+### <a id="自由选择空内容元素"></a>2.自由选择空内容元素
 ```Objective-C
 交互事件可选择SEL或block方式
 self.tableView.ly_emptyView = [LYEmptyView emptyActionViewWithImageStr:@"noData"
@@ -106,7 +106,7 @@ self.tableView.ly_emptyView = [LYEmptyView emptyActionViewWithImageStr:@"noData"
 
 ![](https://github.com/dev-liyang/LYEmptyView/blob/master/images/example2.png)
 
-### 3-自定义空内容元素
+### <a id="自定义空内容元素"></a>3.自定义空内容元素
 特殊情况下，如果空内容状态布局不满足需求时，可进行自定义<br>
 通过方法`  + (instancetype)emptyViewWithCustomView:(UIView *)customView;`<br>
 传入一个View 即可创建一个自定义的emptyView
@@ -117,7 +117,7 @@ self.tableView.ly_emptyView = [LYEmptyView emptyViewWithCustomView:customView];
 ![](https://github.com/dev-liyang/LYEmptyView/blob/master/images/example3.png)
 
 
-### 4-自定义元素的UI样式
+### <a id="自定义元素的UI样式"></a>4.自定义元素的UI样式
 这里自定义UI样式需要很多代码，别担心，在示例5中会讲解二次封装的方式，封装后调用时就只需要一行代码了 ^_^
 ```Objective-C
   //初始化一个emptyView
@@ -141,8 +141,7 @@ self.tableView.ly_emptyView = [LYEmptyView emptyViewWithCustomView:customView];
 >这里只列举了一些常用的属性，更多属性请到LYEmptyView.h查看
 
 ![](https://github.com/dev-liyang/LYEmptyView/blob/master/images/example4.png)
-
-### 5-二次封装
+### <a id="二次封装"></a>5.二次封装
 第4小节的示例代码，修改emptyView的样式需要一个个属性单独去改，如果项目中每个界面都这么写就显得很麻烦，而且不易维护<br>
 解决办法是对库进行二次封装，二次封装后，对UI样式单独管理，方便维护<br>
 
@@ -185,8 +184,7 @@ self.tableView.ly_emptyView = [MyDIYEmpty emptyActionViewWithImageStr:@"noData"
 >经过3步封装，自定义了UI样式，使管理更方便，使调用更简洁<br>
 self.tableView.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 
-
-### 6-延迟显示emptyView
+### <a id="延迟显示emptyView"></a>6.延迟显示emptyView
 如示例1图，框架自动根据DataSource计算是否显示emptyView，在空页面发起网络请求时，DataSource肯定为空，会自动显示emptyView，有的产品需求可能不希望这样，希望发起请求时暂时隐藏emptyView。
 本框架提供了两个方法可实现此需求，两个方法都是scrollView的分类，调用非常方便
 ```Objective-C
@@ -221,7 +219,7 @@ self.tableView.ly_emptyView.autoShowEmptyView = NO;
 
 ![](https://github.com/dev-liyang/LYEmptyView/blob/master/images/example6.gif)
 
-### 7-特殊需求，手动控制emptyView的显示隐藏
+### <a id="特殊需求，手动控制emptyView的显示隐藏"></a>7.特殊需求，手动控制emptyView的显示隐藏
 在某些特殊界面下，有的tableView/collectionView有固定的一些死数据，其它的数据根据网络加载，这时根据以上的示例方法可能达不到这需求。<br>
 本框架提供另外的两个方法来解决这个问题。
 
@@ -253,7 +251,7 @@ self.tableView.ly_emptyView.autoShowEmptyView = NO;
 
 ![](https://github.com/dev-liyang/LYEmptyView/blob/master/images/example7.gif)
 
-### 8-普通view调用示例
+### <a id="普通view调用示例"></a>8.普通view调用示例
 因普通view(包括scrollView)没有DataSource，代码层面无法判断scrollView上有无数据，所以scrollView想要实现占位图，
 还需通过两个方法来手动控制emptyView的显示和隐藏。
 以下是调用示例
@@ -265,8 +263,7 @@ self.view.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 //3.隐藏emptyView
 [self.view ly_hideEmptyView];
 ```
-
-### 9-占位图完全覆盖父视图
+### <a id="占位图完全覆盖父视图"></a>8.占位图完全覆盖父视图
 每个项目需求不同，有的占位图内容多大，占位图就多大，这种情况是默认的，不用设置属性。而有的占位图想要和父视图一样大，以达到覆盖住父视图的目的，这种情况下将LYEmptyView的emptyViewIsCompleteCoverSuperView属性值设置为YES即可。
 ```Objective-C
 DemoEmptyView *emptyView = [DemoEmptyView diyEmptyView];
@@ -276,6 +273,9 @@ self.tableView.ly_emptyView = emptyView;
 ```
 
 ## 更新记录
+
+### 2018-09-11 (pod V1.2.2)
+* 新增构造方法，具体请查看LYEmptyBaseView.h
 
 ### 2018-08-22 (pod V1.2.1)
 * 大神的建议，不要手动调用layoutSubviews。优化baseView里setter方法调用的重绘机制，使用setNeedsLayout更加优美

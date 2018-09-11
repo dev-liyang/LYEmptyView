@@ -50,7 +50,9 @@
 }
 - (void)prepare{
     [super prepare];
-    self.contentViewY = 1000;//默认值,用来判断是否设置过content的Y值
+    
+    self.autoShowEmptyView = YES; //默认自动显隐
+    self.contentViewY = 1000;     //默认值,用来判断是否设置过content的Y值
 }
 - (void)setupSubviews{
     [super setupSubviews];
@@ -62,9 +64,11 @@
     
     //占位图片
     UIImage *image = [UIImage imageNamed:self.imageStr];
-    if (image) {
+    if(self.image){
+        [self setupPromptImageView:self.image];
+    }else if (image) {
         [self setupPromptImageView:image];
-    }else{
+    } else{
         if (_promptImageView) {
             [_promptImageView removeFromSuperview];
         }
@@ -129,7 +133,7 @@
         self.ly_size = CGSizeMake(contentWidth, contentHeight);
     }
     self.center = CGPointMake(emptyViewCenterX, emptyViewCenterY);
-
+    
     //设置contentView
     self.contentView.ly_size = CGSizeMake(contentWidth, contentHeight);
     if (self.emptyViewIsCompleteCoverSuperView) {
@@ -161,7 +165,7 @@
 
 #pragma mark - ------------------ Setup View ------------------
 - (void)setupPromptImageView:(UIImage *)img{
-
+    
     self.promptImageView.image = img;
     
     CGFloat imgViewWidth = img.size.width;
@@ -171,7 +175,7 @@
         if (imgViewWidth > imgViewHeight) {//以宽为基准，按比例缩放高度
             imgViewHeight = (imgViewHeight / imgViewWidth) * self.imageSize.width;
             imgViewWidth = self.imageSize.width;
-        
+            
         }else{//以高为基准，按比例缩放宽度
             imgViewWidth = (imgViewWidth / imgViewHeight) * self.imageSize.height;
             imgViewHeight = self.imageSize.height;
@@ -184,7 +188,7 @@
 }
 
 - (void)setupTitleLabel:(NSString *)titleStr{
-        
+    
     UIFont *font = self.titleLabFont.pointSize ? self.titleLabFont : kTitleLabFont;
     CGFloat fontSize = font.pointSize;
     UIColor *textColor = self.titleLabTextColor ? self.titleLabTextColor : kBlackColor;
@@ -316,7 +320,7 @@
 -(void)setTitleLabFont:(UIFont *)titleLabFont{
     if (_titleLabFont != titleLabFont) {
         _titleLabFont = titleLabFont;
-
+        
         if (_titleLabel) {
             [self setupSubviews];
         }
@@ -404,7 +408,7 @@
 - (void)setActionBtnBorderWidth:(CGFloat)actionBtnBorderWidth{
     if (actionBtnBorderWidth != _actionBtnBorderWidth) {
         _actionBtnBorderWidth = actionBtnBorderWidth;
-
+        
         if (_actionButton) {
             _actionButton.layer.borderWidth = actionBtnBorderWidth;
         }

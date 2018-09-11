@@ -10,6 +10,10 @@
 
 @interface LYEmptyView : LYEmptyBaseView
 
+/**
+ 是否自动显隐EmptyView, default=YES
+ */
+@property (nonatomic, assign) BOOL autoShowEmptyView;
 
 /**
  占位图是否完全覆盖父视图， default=NO

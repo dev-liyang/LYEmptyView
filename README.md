@@ -263,7 +263,7 @@ self.view.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
 //3.隐藏emptyView
 [self.view ly_hideEmptyView];
 ```
-### <a id="占位图完全覆盖父视图"></a>8.占位图完全覆盖父视图
+### <a id="占位图完全覆盖父视图"></a>9.占位图完全覆盖父视图
 每个项目需求不同，有的占位图内容多大，占位图就多大，这种情况是默认的，不用设置属性。而有的占位图想要和父视图一样大，以达到覆盖住父视图的目的，这种情况下将LYEmptyView的emptyViewIsCompleteCoverSuperView属性值设置为YES即可。
 ```Objective-C
 DemoEmptyView *emptyView = [DemoEmptyView diyEmptyView];

@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
     s.name         = 'LYEmptyView'
 
-    s.version      = '1.2.1'
+    s.version      = '1.2.2'
 
     s.summary      = 'so esay integrate empty content view'
 

@@ -70,7 +70,7 @@
         [self setupPromptImageView:image];
     } else{
         if (_promptImageView) {
-            [_promptImageView removeFromSuperview];
+            [self.promptImageView removeFromSuperview];
             self.promptImageView = nil;
         }
     }
@@ -80,7 +80,7 @@
         [self setupTitleLabel:self.titleStr];
     }else{
         if (_titleLabel) {
-            [_titleLabel removeFromSuperview];
+            [self.titleLabel removeFromSuperview];
             self.titleLabel = nil;
         }
     }
@@ -90,7 +90,7 @@
         [self setupDetailLabel:self.detailStr];
     }else{
         if (_detailLabel) {
-            [_detailLabel removeFromSuperview];
+            [self.detailLabel removeFromSuperview];
             self.detailLabel = nil;
         }
     }
@@ -103,13 +103,13 @@
             [self setupActionBtn:self.btnTitleStr target:nil action:nil btnClickBlock:self.btnClickBlock];
         }else{
             if (_actionButton) {
-                [_actionButton removeFromSuperview];
+                [self.actionButton removeFromSuperview];
                 self.actionButton = nil;
             }
         }
     }else{
         if (_actionButton) {
-            [_actionButton removeFromSuperview];
+            [self.actionButton removeFromSuperview];
             self.actionButton = nil;
         }
     }
@@ -157,14 +157,19 @@
         _actionButton.ly_centerX    = centerX;
     }
     
-    //有无设置偏移
-    if (self.contentViewOffset) {
+    if (self.contentViewOffset) { //有无设置偏移
         self.ly_centerY += self.contentViewOffset;
+        
+    } else if (self.contentViewY < 1000) { //有无设置Y坐标值
+        self.ly_y = self.contentViewY;
+        
     }
     
-    //有无设置Y坐标值
-    if (self.contentViewY < 1000) {
-        self.ly_y = self.contentViewY;
+    //是否忽略scrollView的contentInset
+    if (self.ignoreContentInset && [self.superview isKindOfClass:[UIScrollView class]]) {
+        UIScrollView *scrollView = (UIScrollView *)self.superview;
+        self.ly_centerY -= scrollView.contentInset.top;
+        self.ly_centerX -= scrollView.contentInset.left;
     }
 }
 
@@ -275,7 +280,9 @@
 - (void)setEmptyViewIsCompleteCoverSuperView:(BOOL)emptyViewIsCompleteCoverSuperView{
     _emptyViewIsCompleteCoverSuperView = emptyViewIsCompleteCoverSuperView;
     if (emptyViewIsCompleteCoverSuperView) {
-        self.backgroundColor = kBackgroundColor;
+        if (!self.backgroundColor) {
+            self.backgroundColor = kBackgroundColor;
+        }
     }else{
         self.backgroundColor = [UIColor clearColor];
     }

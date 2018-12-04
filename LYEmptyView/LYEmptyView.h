@@ -36,6 +36,11 @@
  */
 @property (nonatomic, assign) CGFloat  contentViewY;
 
+/**
+ 是否忽略scrollView的contentInset
+ */
+@property (nonatomic, assign) BOOL ignoreContentInset;
+
 
 //-------------------------- image --------------------------//
 /**

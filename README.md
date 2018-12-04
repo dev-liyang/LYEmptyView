@@ -274,6 +274,10 @@ self.tableView.ly_emptyView = emptyView;
 
 ## 更新记录
 
+### 2018-12-04 (pod V1.2.3)
+* 1.fix bug：当子控件的文字被设置为空并再次设置为非空时, 子控件无法正常显示
+* 2.新增属性：ignoreContentInset，是否忽略scrollView的contentInset
+
 ### 2018-09-11 (pod V1.2.2)
 * 新增构造方法，具体请查看LYEmptyBaseView.h
 

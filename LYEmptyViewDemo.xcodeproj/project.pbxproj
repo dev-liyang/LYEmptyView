@@ -8,15 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		B62151151FE0D13E00E8BB36 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B62151141FE0D13E00E8BB36 /* MBProgressHUD.m */; };
-		B62151301FE0D14E00E8BB36 /* Demo2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B62151191FE0D14E00E8BB36 /* Demo2ViewController.m */; };
-		B62151311FE0D14E00E8BB36 /* Demo2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B621511A1FE0D14E00E8BB36 /* Demo2ViewController.xib */; };
 		B62151321FE0D14E00E8BB36 /* Demo3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B621511C1FE0D14E00E8BB36 /* Demo3ViewController.m */; };
 		B62151331FE0D14E00E8BB36 /* Demo3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B621511D1FE0D14E00E8BB36 /* Demo3ViewController.xib */; };
 		B62151341FE0D14E00E8BB36 /* Demo4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B621511F1FE0D14E00E8BB36 /* Demo4ViewController.m */; };
 		B62151351FE0D14E00E8BB36 /* Demo4ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B62151201FE0D14E00E8BB36 /* Demo4ViewController.xib */; };
 		B62151361FE0D14E00E8BB36 /* DemoEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = B62151221FE0D14E00E8BB36 /* DemoEmptyView.m */; };
-		B62151371FE0D14E00E8BB36 /* Demo1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B62151241FE0D14E00E8BB36 /* Demo1ViewController.m */; };
-		B62151381FE0D14E00E8BB36 /* Demo1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B62151251FE0D14E00E8BB36 /* Demo1ViewController.xib */; };
 		B62151391FE0D14E00E8BB36 /* MyDIYEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = B62151281FE0D14E00E8BB36 /* MyDIYEmpty.m */; };
 		B621513A1FE0D14E00E8BB36 /* MyDIYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B621512A1FE0D14E00E8BB36 /* MyDIYViewController.m */; };
 		B621513B1FE0D14E00E8BB36 /* MyDIYViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B621512B1FE0D14E00E8BB36 /* MyDIYViewController.xib */; };
@@ -38,6 +34,11 @@
 		B6AA97641EC060B000B0CF55 /* LYEmptyViewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AA97631EC060B000B0CF55 /* LYEmptyViewDemoUITests.m */; };
 		B6BEB1081ED9191400901EEB /* HomeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BEB1061ED9191400901EEB /* HomeListViewController.m */; };
 		B6BEB1091ED9191400901EEB /* HomeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BEB1071ED9191400901EEB /* HomeListViewController.xib */; };
+		B6E4CF88224B6190000E98AA /* BaseDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4CF86224B6190000E98AA /* BaseDemoViewController.m */; };
+		B6E4CF89224B6190000E98AA /* BaseDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E4CF87224B6190000E98AA /* BaseDemoViewController.xib */; };
+		B6E4CF8C224B665D000E98AA /* OneCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4CF8B224B665D000E98AA /* OneCodeViewController.m */; };
+		B6E4CF8F224B6AC8000E98AA /* Demo1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4CF8E224B6AC8000E98AA /* Demo1ViewController.m */; };
+		B6E4CF92224B7576000E98AA /* Demo2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4CF91224B7576000E98AA /* Demo2ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,9 +61,6 @@
 /* Begin PBXFileReference section */
 		B62151131FE0D13E00E8BB36 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		B62151141FE0D13E00E8BB36 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		B62151181FE0D14E00E8BB36 /* Demo2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo2ViewController.h; sourceTree = "<group>"; };
-		B62151191FE0D14E00E8BB36 /* Demo2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demo2ViewController.m; sourceTree = "<group>"; };
-		B621511A1FE0D14E00E8BB36 /* Demo2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Demo2ViewController.xib; sourceTree = "<group>"; };
 		B621511B1FE0D14E00E8BB36 /* Demo3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo3ViewController.h; sourceTree = "<group>"; };
 		B621511C1FE0D14E00E8BB36 /* Demo3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demo3ViewController.m; sourceTree = "<group>"; };
 		B621511D1FE0D14E00E8BB36 /* Demo3ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Demo3ViewController.xib; sourceTree = "<group>"; };
@@ -71,9 +69,6 @@
 		B62151201FE0D14E00E8BB36 /* Demo4ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Demo4ViewController.xib; sourceTree = "<group>"; };
 		B62151211FE0D14E00E8BB36 /* DemoEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoEmptyView.h; sourceTree = "<group>"; };
 		B62151221FE0D14E00E8BB36 /* DemoEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoEmptyView.m; sourceTree = "<group>"; };
-		B62151231FE0D14E00E8BB36 /* Demo1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo1ViewController.h; sourceTree = "<group>"; };
-		B62151241FE0D14E00E8BB36 /* Demo1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demo1ViewController.m; sourceTree = "<group>"; };
-		B62151251FE0D14E00E8BB36 /* Demo1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Demo1ViewController.xib; sourceTree = "<group>"; };
 		B62151271FE0D14E00E8BB36 /* MyDIYEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDIYEmpty.h; sourceTree = "<group>"; };
 		B62151281FE0D14E00E8BB36 /* MyDIYEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDIYEmpty.m; sourceTree = "<group>"; };
 		B62151291FE0D14E00E8BB36 /* MyDIYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDIYViewController.h; sourceTree = "<group>"; };
@@ -113,6 +108,15 @@
 		B6BEB1051ED9191400901EEB /* HomeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListViewController.h; sourceTree = "<group>"; };
 		B6BEB1061ED9191400901EEB /* HomeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeListViewController.m; sourceTree = "<group>"; };
 		B6BEB1071ED9191400901EEB /* HomeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeListViewController.xib; sourceTree = "<group>"; };
+		B6E4CF85224B6190000E98AA /* BaseDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDemoViewController.h; sourceTree = "<group>"; };
+		B6E4CF86224B6190000E98AA /* BaseDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDemoViewController.m; sourceTree = "<group>"; };
+		B6E4CF87224B6190000E98AA /* BaseDemoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseDemoViewController.xib; sourceTree = "<group>"; };
+		B6E4CF8A224B665D000E98AA /* OneCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OneCodeViewController.h; sourceTree = "<group>"; };
+		B6E4CF8B224B665D000E98AA /* OneCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneCodeViewController.m; sourceTree = "<group>"; };
+		B6E4CF8D224B6AC8000E98AA /* Demo1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demo1ViewController.h; sourceTree = "<group>"; };
+		B6E4CF8E224B6AC8000E98AA /* Demo1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demo1ViewController.m; sourceTree = "<group>"; };
+		B6E4CF90224B7576000E98AA /* Demo2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demo2ViewController.h; sourceTree = "<group>"; };
+		B6E4CF91224B7576000E98AA /* Demo2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demo2ViewController.m; sourceTree = "<group>"; };
 		B6F546471F2AC44200080413 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +166,9 @@
 		B62151161FE0D14E00E8BB36 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B6E4CF85224B6190000E98AA /* BaseDemoViewController.h */,
+				B6E4CF86224B6190000E98AA /* BaseDemoViewController.m */,
+				B6E4CF87224B6190000E98AA /* BaseDemoViewController.xib */,
 				B62151171FE0D14E00E8BB36 /* Demo */,
 				B621512C1FE0D14E00E8BB36 /* OtherApp */,
 				B62151261FE0D14E00E8BB36 /* DIY */,
@@ -174,12 +181,12 @@
 			children = (
 				B62151211FE0D14E00E8BB36 /* DemoEmptyView.h */,
 				B62151221FE0D14E00E8BB36 /* DemoEmptyView.m */,
-				B62151231FE0D14E00E8BB36 /* Demo1ViewController.h */,
-				B62151241FE0D14E00E8BB36 /* Demo1ViewController.m */,
-				B62151251FE0D14E00E8BB36 /* Demo1ViewController.xib */,
-				B62151181FE0D14E00E8BB36 /* Demo2ViewController.h */,
-				B62151191FE0D14E00E8BB36 /* Demo2ViewController.m */,
-				B621511A1FE0D14E00E8BB36 /* Demo2ViewController.xib */,
+				B6E4CF8A224B665D000E98AA /* OneCodeViewController.h */,
+				B6E4CF8B224B665D000E98AA /* OneCodeViewController.m */,
+				B6E4CF8D224B6AC8000E98AA /* Demo1ViewController.h */,
+				B6E4CF8E224B6AC8000E98AA /* Demo1ViewController.m */,
+				B6E4CF90224B7576000E98AA /* Demo2ViewController.h */,
+				B6E4CF91224B7576000E98AA /* Demo2ViewController.m */,
 				B621511B1FE0D14E00E8BB36 /* Demo3ViewController.h */,
 				B621511C1FE0D14E00E8BB36 /* Demo3ViewController.m */,
 				B621511D1FE0D14E00E8BB36 /* Demo3ViewController.xib */,
@@ -412,10 +419,9 @@
 				B6AA97491EC060B000B0CF55 /* Main.storyboard in Resources */,
 				B621513D1FE0D14E00E8BB36 /* OtherAppViewController.xib in Resources */,
 				B621513B1FE0D14E00E8BB36 /* MyDIYViewController.xib in Resources */,
-				B62151381FE0D14E00E8BB36 /* Demo1ViewController.xib in Resources */,
+				B6E4CF89224B6190000E98AA /* BaseDemoViewController.xib in Resources */,
 				B62151351FE0D14E00E8BB36 /* Demo4ViewController.xib in Resources */,
 				B6BEB1091ED9191400901EEB /* HomeListViewController.xib in Resources */,
-				B62151311FE0D14E00E8BB36 /* Demo2ViewController.xib in Resources */,
 				B62151331FE0D14E00E8BB36 /* Demo3ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,10 +448,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B62151481FE1075D00E8BB36 /* LYEmptyBaseView.m in Sources */,
-				B62151301FE0D14E00E8BB36 /* Demo2ViewController.m in Sources */,
 				B6AA97431EC060B000B0CF55 /* AppDelegate.m in Sources */,
 				B62151361FE0D14E00E8BB36 /* DemoEmptyView.m in Sources */,
-				B62151371FE0D14E00E8BB36 /* Demo1ViewController.m in Sources */,
 				B649A86620A3D0F3005F733C /* UIView+Empty.m in Sources */,
 				B621514B1FE1075D00E8BB36 /* UIView+LYExtension.m in Sources */,
 				B6AA97401EC060B000B0CF55 /* main.m in Sources */,
@@ -453,11 +457,15 @@
 				B649A86920A3D60C005F733C /* Demo5ViewController.m in Sources */,
 				B62151151FE0D13E00E8BB36 /* MBProgressHUD.m in Sources */,
 				B6BEB1081ED9191400901EEB /* HomeListViewController.m in Sources */,
+				B6E4CF92224B7576000E98AA /* Demo2ViewController.m in Sources */,
 				B62151491FE1075D00E8BB36 /* LYEmptyView.m in Sources */,
 				B62151341FE0D14E00E8BB36 /* Demo4ViewController.m in Sources */,
 				B621513A1FE0D14E00E8BB36 /* MyDIYViewController.m in Sources */,
+				B6E4CF88224B6190000E98AA /* BaseDemoViewController.m in Sources */,
 				B62151391FE0D14E00E8BB36 /* MyDIYEmpty.m in Sources */,
 				B65504BD211034D300F23218 /* Demo6ViewController.m in Sources */,
+				B6E4CF8F224B6AC8000E98AA /* Demo1ViewController.m in Sources */,
+				B6E4CF8C224B665D000E98AA /* OneCodeViewController.m in Sources */,
 				B621513C1FE0D14E00E8BB36 /* OtherAppViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

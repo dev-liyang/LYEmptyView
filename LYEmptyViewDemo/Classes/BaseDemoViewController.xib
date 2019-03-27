@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseDemoViewController">
+            <connections>
+                <outlet property="clearBtn" destination="zJz-Ki-1Be" id="F46-Ol-PkX"/>
+                <outlet property="tableView" destination="1aX-at-Mnw" id="GyD-PB-P6c"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="1aX-at-Mnw">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="lAi-3x-MaF"/>
+                        <outlet property="delegate" destination="-1" id="iI2-xt-plf"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61O-pq-UAJ">
+                    <rect key="frame" x="20" y="587" width="100" height="50"/>
+                    <color key="backgroundColor" red="0.1974561668" green="0.74686706849999995" blue="0.43511480609999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="fEd-V8-XWQ"/>
+                        <constraint firstAttribute="height" constant="50" id="fHW-oF-O2Y"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="加载数据">
+                        <color key="titleColor" red="1" green="0.98154419260000003" blue="0.98912663329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="loadData:" destination="-1" eventType="touchUpInside" id="Gdq-3b-hVz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJz-Ki-1Be">
+                    <rect key="frame" x="255" y="587" width="100" height="50"/>
+                    <color key="backgroundColor" red="0.1974561668" green="0.74686706849999995" blue="0.43511480609999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="PUx-Km-18n"/>
+                        <constraint firstAttribute="height" constant="50" id="yHF-Zg-JJK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="清除数据">
+                        <color key="titleColor" red="1" green="0.98154419260000003" blue="0.98912663329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="clearData:" destination="-1" eventType="touchUpInside" id="lXN-9k-zEs"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="1aX-at-Mnw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BVn-2d-PoD"/>
+                <constraint firstAttribute="trailing" secondItem="zJz-Ki-1Be" secondAttribute="trailing" constant="20" id="NR1-dF-8OV"/>
+                <constraint firstAttribute="trailing" secondItem="1aX-at-Mnw" secondAttribute="trailing" id="TSh-7e-8uj"/>
+                <constraint firstItem="1aX-at-Mnw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="V1L-Wa-BEK"/>
+                <constraint firstItem="61O-pq-UAJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="YiR-Z3-6DU"/>
+                <constraint firstAttribute="bottom" secondItem="zJz-Ki-1Be" secondAttribute="bottom" constant="30" id="fKB-3y-bGw"/>
+                <constraint firstAttribute="bottom" secondItem="1aX-at-Mnw" secondAttribute="bottom" id="q3H-Iw-xkR"/>
+                <constraint firstAttribute="bottom" secondItem="61O-pq-UAJ" secondAttribute="bottom" constant="30" id="rbK-41-rLk"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

@@ -11,6 +11,7 @@
 
 #import "LYEmptyViewHeader.h"
 #import "MyDIYEmpty.h"
+#import "DemoEmptyView.h"
 #import "MBProgressHUD.h"
 
 #define kMainScreenWidth  [[UIScreen mainScreen] bounds].size.width

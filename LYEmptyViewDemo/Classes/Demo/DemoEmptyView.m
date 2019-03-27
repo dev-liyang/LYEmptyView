@@ -32,7 +32,7 @@
     
 //    self.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1];
     
-    self.autoShowEmptyView = NO;
+    self.autoShowEmptyView = NO; //如果想要DemoEmptyView的效果都不是自动显隐的，这里统一设置为NO，初始化时就不必再一一去写了
     
     self.titleLabTextColor = MainColor(180, 30, 50);
     self.titleLabFont = [UIFont systemFontOfSize:18];

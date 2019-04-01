@@ -9,57 +9,98 @@
 #import "Demo4ViewController.h"
 #import "DemoEmptyView.h"
 
-@interface Demo4ViewController ()<UITableViewDataSource, UITableViewDelegate>
-
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *dataArray;
-
-@property (nonatomic, assign) NSInteger index;
-
+@interface Demo4ViewController ()<UITableViewDelegate, UITableViewDataSource>
 @end
 
 @implementation Demo4ViewController
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-
-    self.navigationController.navigationBar.barTintColor = MainColor(247, 247, 247);
-    self.navigationController.navigationBar.tintColor = MainColor(70, 70, 70);
-
-    [self.navigationController.navigationBar setTitleTextAttributes: @{NSFontAttributeName:[UIFont boldSystemFontOfSize:17],NSForegroundColorAttributeName:MainColor(70, 70, 70)}];
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:NSStringFromClass([self.superclass class]) bundle:nibBundleOrNil];
+    return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = MainColor(247, 247, 247);
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    NSMutableArray *arr = [NSMutableArray arrayWithArray:@[@"数据-0", @"数据-0"]];
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:@[@"数据-0", @"数据-1"]];
     NSMutableArray *arr1 = [NSMutableArray arrayWithArray:@[]];
     self.dataArray = [NSMutableArray array];
     [self.dataArray addObject:arr];
     [self.dataArray addObject:arr1];
     
-    [self setupUI];
-    
-    [self setEmpty];
+    [self setUI];
 }
 
-- (void)setupUI{
-    CGFloat tabbarH = self.tabBarController.tabBar.frame.size.height;
-    self.tableView.frame = CGRectMake(0, kStatusBarHeight + 44, kMainScreenWidth, kMainScreenHeight - kStatusBarHeight - 44 - tabbarH);
+- (void)setUI{
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.backgroundColor = MainColor(247, 247, 247);
-    if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
+    self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     
     DemoEmptyView *emptyView = [DemoEmptyView diyEmptyView];
-    emptyView.contentViewOffset = 50;
-    emptyView.imageSize = CGSizeMake(80, 80);
+    //emptyView.autoShowEmptyView = NO; //二次封装的DemoEmptyView内如果设置过了，此处也可不写
+    emptyView.contentViewOffset = 50;//偏移
+    emptyView.imageSize = CGSizeMake(70, 70);//设置图片大小
     self.tableView.ly_emptyView = emptyView;
+}
+
+//模拟网络请求
+- (void)requestDataWithFinish:(LYRequestFinish)finish{
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        if (![self.dataArray[1] count]) {
+            sleep(1);
+            [self.dataArray[1] removeAllObjects];
+            NSMutableArray *arr = [@[@"数据-1-0", @"数据-1-1", @"数据-1-2"] mutableCopy];
+            [self.dataArray[1] addObjectsFromArray:arr];
+            self.indexNumber = 3;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (finish) {
+                    finish();
+                }
+            });
+        } else {
+            [self.dataArray[1] addObject:[NSString stringWithFormat:@"数据-1-%zd", self.indexNumber++]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (finish) {
+                    finish();
+                }
+            });
+        }
+    });
+}
+
+- (void)loadDataWithFinish:(LYRequestFinish)finish{
+    
+    [self.tableView ly_hideEmptyView]; //手动隐藏emptyView
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //发起网络请求
+    [self requestDataWithFinish:^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.tableView reloadData];
+        [self setEmpty];//手动去判断emptyView的显隐
+    }];
+}
+
+- (void)clearData{
+    [self.dataArray[1] removeAllObjects];
+    [self.tableView reloadData];
+    [self setEmpty];//手动去判断emptyView的显隐
+}
+
+- (void)setEmpty{
+    //需要自己去判断有无数据，从而根据有无情况进行显示
+    if (self.dataArray.count >= 2) {
+        if ([self.dataArray[1] count]) {
+            [self.tableView ly_hideEmptyView];//手动隐藏emptyView
+        }else{
+            [self.tableView ly_showEmptyView];//手动显示emptyView
+        }
+    }else{
+        [self.tableView ly_showEmptyView];//手动显示emptyView
+    }
 }
 
 #pragma mark - -------------- TableView DataSource -----------------
@@ -103,64 +144,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)getData:(id)sender{
-    [self requestData];
-}
 
-- (void)requestData{
-    
-    [self.tableView ly_hideEmptyView];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        sleep(1);
-        [self.dataArray[1] removeAllObjects];
-        NSArray *arr = @[@"数据-1", @"数据-1"];
-        [self.dataArray[1] addObjectsFromArray:arr];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [self.tableView reloadData];
-            [self setEmpty];
-        });
-    });
-}
-
-- (IBAction)loadData:(id)sender {
-    [self requestData];
-}
-- (IBAction)clearData:(id)sender {
-    [self.dataArray[1] removeAllObjects];
-    [self.tableView reloadData];
-    [self setEmpty];
-}
-
-- (void)setEmpty{
-    //需要自己去判断有无数据，从而根据有无情况进行显示
-    if (self.dataArray.count >= 2) {
-        if ([self.dataArray[1] count]) {
-            [self.tableView ly_hideEmptyView];
-        }else{
-            [self.tableView ly_showEmptyView];
-        }
-    }else{
-        [self.tableView ly_showEmptyView];
-    }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

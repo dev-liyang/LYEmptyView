@@ -58,6 +58,7 @@
 - (DemoEmptyView *)noDataView{
     if (!_noDataView) {
         _noDataView = [DemoEmptyView diyEmptyView];
+        //_noDataView.autoShowEmptyView = NO; //二次封装的DemoEmptyView内如果设置过了，此处也可不写
     }
     return _noDataView;
 }
@@ -65,6 +66,7 @@
 - (DemoEmptyView *)noNetworkView{
     if (!_noNetworkView) {
         _noNetworkView = [DemoEmptyView diyEmptyActionViewWithTarget:self action:@selector(loadTestData)];
+        //_noNetworkView.autoShowEmptyView = NO; //二次封装的DemoEmptyView内如果设置过了，此处也可不写
     }
     return _noNetworkView;
 }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B62151151FE0D13E00E8BB36 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B62151141FE0D13E00E8BB36 /* MBProgressHUD.m */; };
 		B62151341FE0D14E00E8BB36 /* Demo4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B621511F1FE0D14E00E8BB36 /* Demo4ViewController.m */; };
-		B62151351FE0D14E00E8BB36 /* Demo4ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B62151201FE0D14E00E8BB36 /* Demo4ViewController.xib */; };
 		B62151361FE0D14E00E8BB36 /* DemoEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = B62151221FE0D14E00E8BB36 /* DemoEmptyView.m */; };
 		B62151391FE0D14E00E8BB36 /* MyDIYEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = B62151281FE0D14E00E8BB36 /* MyDIYEmpty.m */; };
 		B621513A1FE0D14E00E8BB36 /* MyDIYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B621512A1FE0D14E00E8BB36 /* MyDIYViewController.m */; };
@@ -62,7 +61,6 @@
 		B62151141FE0D13E00E8BB36 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		B621511E1FE0D14E00E8BB36 /* Demo4ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo4ViewController.h; sourceTree = "<group>"; };
 		B621511F1FE0D14E00E8BB36 /* Demo4ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demo4ViewController.m; sourceTree = "<group>"; };
-		B62151201FE0D14E00E8BB36 /* Demo4ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Demo4ViewController.xib; sourceTree = "<group>"; };
 		B62151211FE0D14E00E8BB36 /* DemoEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoEmptyView.h; sourceTree = "<group>"; };
 		B62151221FE0D14E00E8BB36 /* DemoEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoEmptyView.m; sourceTree = "<group>"; };
 		B62151271FE0D14E00E8BB36 /* MyDIYEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDIYEmpty.h; sourceTree = "<group>"; };
@@ -189,7 +187,6 @@
 				B6ED70122251E266007C72DF /* Demo3ViewController.m */,
 				B621511E1FE0D14E00E8BB36 /* Demo4ViewController.h */,
 				B621511F1FE0D14E00E8BB36 /* Demo4ViewController.m */,
-				B62151201FE0D14E00E8BB36 /* Demo4ViewController.xib */,
 				B649A86720A3D60C005F733C /* Demo5ViewController.h */,
 				B649A86820A3D60C005F733C /* Demo5ViewController.m */,
 				B65504BA211034D300F23218 /* Demo6ViewController.h */,
@@ -417,7 +414,6 @@
 				B621513D1FE0D14E00E8BB36 /* OtherAppViewController.xib in Resources */,
 				B621513B1FE0D14E00E8BB36 /* MyDIYViewController.xib in Resources */,
 				B6E4CF89224B6190000E98AA /* BaseDemoViewController.xib in Resources */,
-				B62151351FE0D14E00E8BB36 /* Demo4ViewController.xib in Resources */,
 				B6BEB1091ED9191400901EEB /* HomeListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

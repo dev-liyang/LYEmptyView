@@ -29,9 +29,9 @@
 - (void)setUI{
     
     //方式1
-    //    LYEmptyView *empty = [LYEmptyView emptyViewWithImageStr:@"noData"
-    //                                                            titleStr:@"暂无数据"
-    //                                                           detailStr:@""];
+//        LYEmptyView *empty = [LYEmptyView emptyViewWithImageStr:@"noData"
+//                                                       titleStr:@"暂无数据"
+//                                                      detailStr:@""];
     //    empty.autoShowEmptyView = NO;//框架默认自动显隐，初始化tableView没有数据时会显示emptyView，故此处应关闭自动显隐
     //    self.tableView.ly_emptyView = empty;
     

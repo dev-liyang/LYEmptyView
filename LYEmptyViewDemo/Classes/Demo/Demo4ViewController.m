@@ -30,6 +30,8 @@
     [self.dataArray addObject:arr1];
     
     [self setUI];
+    
+    [self setEmpty];
 }
 
 - (void)setUI{

@@ -33,7 +33,6 @@
 		B6BEB1091ED9191400901EEB /* HomeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BEB1071ED9191400901EEB /* HomeListViewController.xib */; };
 		B6E4CF88224B6190000E98AA /* BaseDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4CF86224B6190000E98AA /* BaseDemoViewController.m */; };
 		B6E4CF89224B6190000E98AA /* BaseDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E4CF87224B6190000E98AA /* BaseDemoViewController.xib */; };
-		B6E4CF8C224B665D000E98AA /* OneCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4CF8B224B665D000E98AA /* OneCodeViewController.m */; };
 		B6E4CF8F224B6AC8000E98AA /* Demo1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4CF8E224B6AC8000E98AA /* Demo1ViewController.m */; };
 		B6E4CF92224B7576000E98AA /* Demo2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4CF91224B7576000E98AA /* Demo2ViewController.m */; };
 		B6ED70142251E266007C72DF /* Demo3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6ED70122251E266007C72DF /* Demo3ViewController.m */; };
@@ -105,8 +104,6 @@
 		B6E4CF85224B6190000E98AA /* BaseDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDemoViewController.h; sourceTree = "<group>"; };
 		B6E4CF86224B6190000E98AA /* BaseDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDemoViewController.m; sourceTree = "<group>"; };
 		B6E4CF87224B6190000E98AA /* BaseDemoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseDemoViewController.xib; sourceTree = "<group>"; };
-		B6E4CF8A224B665D000E98AA /* OneCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OneCodeViewController.h; sourceTree = "<group>"; };
-		B6E4CF8B224B665D000E98AA /* OneCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneCodeViewController.m; sourceTree = "<group>"; };
 		B6E4CF8D224B6AC8000E98AA /* Demo1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demo1ViewController.h; sourceTree = "<group>"; };
 		B6E4CF8E224B6AC8000E98AA /* Demo1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demo1ViewController.m; sourceTree = "<group>"; };
 		B6E4CF90224B7576000E98AA /* Demo2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demo2ViewController.h; sourceTree = "<group>"; };
@@ -177,8 +174,6 @@
 			children = (
 				B62151211FE0D14E00E8BB36 /* DemoEmptyView.h */,
 				B62151221FE0D14E00E8BB36 /* DemoEmptyView.m */,
-				B6E4CF8A224B665D000E98AA /* OneCodeViewController.h */,
-				B6E4CF8B224B665D000E98AA /* OneCodeViewController.m */,
 				B6E4CF8D224B6AC8000E98AA /* Demo1ViewController.h */,
 				B6E4CF8E224B6AC8000E98AA /* Demo1ViewController.m */,
 				B6E4CF90224B7576000E98AA /* Demo2ViewController.h */,
@@ -456,7 +451,6 @@
 				B62151391FE0D14E00E8BB36 /* MyDIYEmpty.m in Sources */,
 				B65504BD211034D300F23218 /* Demo6ViewController.m in Sources */,
 				B6E4CF8F224B6AC8000E98AA /* Demo1ViewController.m in Sources */,
-				B6E4CF8C224B665D000E98AA /* OneCodeViewController.m in Sources */,
 				B621513C1FE0D14E00E8BB36 /* OtherAppViewController.m in Sources */,
 				B6ED70142251E266007C72DF /* Demo3ViewController.m in Sources */,
 			);

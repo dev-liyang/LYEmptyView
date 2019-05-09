@@ -6,8 +6,8 @@
 //  Copyright © 2018年 liyang. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseDemoViewController.h"
 
-@interface Demo6ViewController : UIViewController
+@interface Demo6ViewController : BaseDemoViewController
 
 @end

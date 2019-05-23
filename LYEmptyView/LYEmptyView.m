@@ -25,7 +25,7 @@
 #define kActionBtnHorizontalMargin 30.f
 
 //背景色
-#define kBackgroundColor [UIColor colorWithRed:247.f/255.f green:247.f/255.f blue:247.f/255.f alpha:1.f]
+#define kBackgroundColor [UIColor colorWithRed:250.f/255.f green:250.f/255.f blue:250.f/255.f alpha:1.f]
 //黑色
 #define kBlackColor [UIColor colorWithRed:0.3f green:0.3f blue:0.3f alpha:1.f]
 //灰色
@@ -63,7 +63,10 @@
     subViweMargin = self.subViewMargin ? self.subViewMargin : kSubViewMargin;
     
     //占位图片
-    UIImage *image = [UIImage imageNamed:self.imageStr];
+    UIImage *image;
+    if (self.imageStr.length) {
+        image = [UIImage imageNamed:self.imageStr];
+    }
     if(self.image){
         [self setupPromptImageView:self.image];
     }else if (image) {
@@ -143,6 +146,8 @@
     self.contentView.ly_size = CGSizeMake(contentWidth, contentHeight);
     if (self.emptyViewIsCompleteCoverSuperView) {
         self.contentView.center = CGPointMake(emptyViewCenterX, emptyViewCenterY);
+    } else {
+        self.contentView.center = CGPointMake(contentWidth*0.5, contentHeight*0.5);
     }
     
     //子控件的centerX设置
@@ -280,9 +285,10 @@
 - (void)setEmptyViewIsCompleteCoverSuperView:(BOOL)emptyViewIsCompleteCoverSuperView{
     _emptyViewIsCompleteCoverSuperView = emptyViewIsCompleteCoverSuperView;
     if (emptyViewIsCompleteCoverSuperView) {
-        if (!self.backgroundColor) {
+        if (!self.backgroundColor || [self.backgroundColor isEqual:[UIColor clearColor]]) {
             self.backgroundColor = kBackgroundColor;
         }
+        [self setNeedsLayout];
     }else{
         self.backgroundColor = [UIColor clearColor];
     }

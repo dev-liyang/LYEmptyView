@@ -94,6 +94,8 @@ static char kEmptyViewKey;
 #pragma mark - Public Method
 - (void)ly_showEmptyView{
     
+    NSAssert(![self isKindOfClass:[LYEmptyView class]], @"LYEmptyView及其子类不能调用ly_showEmptyView方法");
+    
     [self.ly_emptyView.superview layoutSubviews];
     
     self.ly_emptyView.hidden = NO;
@@ -102,13 +104,16 @@ static char kEmptyViewKey;
     [self bringSubviewToFront:self.ly_emptyView];
 }
 - (void)ly_hideEmptyView{
+    NSAssert(![self isKindOfClass:[LYEmptyView class]], @"LYEmptyView及其子类不能调用ly_hideEmptyView方法");
     self.ly_emptyView.hidden = YES;
 }
 
 - (void)ly_startLoading{
+    NSAssert(![self isKindOfClass:[LYEmptyView class]], @"LYEmptyView及其子类不能调用ly_startLoading方法");
     self.ly_emptyView.hidden = YES;
 }
 - (void)ly_endLoading{
+    NSAssert(![self isKindOfClass:[LYEmptyView class]], @"LYEmptyView及其子类不能调用ly_endLoading方法");
     self.ly_emptyView.hidden = [self totalDataCount];
 }
 

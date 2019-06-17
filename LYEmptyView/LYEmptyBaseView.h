@@ -30,9 +30,9 @@ typedef void (^LYActionTapBlock)(void);
 @property (nonatomic,strong,readonly) UIView *customView;
 
 /**
- emptyView内容区域点击事件
+ emptyView点击事件
  */
-@property (nonatomic, copy) LYActionTapBlock tapContentViewBlock;
+@property (nonatomic, copy) LYActionTapBlock tapEmptyViewBlock;
 
 
 ///初始化配置

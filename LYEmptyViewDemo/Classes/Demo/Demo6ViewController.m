@@ -42,6 +42,10 @@
     emptyView.emptyViewIsCompleteCoverSuperView = YES;//完全覆盖父视图，背景色默认为浅白色，可自行设置
 //    emptyView.backgroundColor = [UIColor redColor];//自己设置背景色为红色，此设置也可封装到公共的地方（DemoEmptyView），就不用每次设置了
     self.tableView.ly_emptyView = emptyView;
+    
+    [emptyView setTapEmptyViewBlock:^{
+        NSLog(@"点击了屏幕...");
+    }];
 }
 
 - (void)loadDataWithFinish:(LYRequestFinish)finish{

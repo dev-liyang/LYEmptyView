@@ -151,10 +151,10 @@
     if (!_contentView) {
         _contentView = [[UIView alloc] initWithFrame:CGRectZero];
         [self addSubview:_contentView];
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapContentView:)];
-        [_contentView addGestureRecognizer:tap];
     }
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapEmptyView:)];
+    [self addGestureRecognizer:tap];
 }
 
 - (void)creatEmptyViewWithCustomView:(UIView *)customView{
@@ -169,12 +169,15 @@
         [_contentView addSubview:customView];
     }
     _customView = customView;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapEmptyView:)];
+    [self addGestureRecognizer:tap];
 }
 
 #pragma mark - ------------------ Event Method ------------------
-- (void)tapContentView:(UITapGestureRecognizer *)tap{
-    if (_tapContentViewBlock) {
-        _tapContentViewBlock();
+- (void)tapEmptyView:(UITapGestureRecognizer *)tap{
+    if (_tapEmptyViewBlock) {
+        _tapEmptyViewBlock();
     }
 }
 

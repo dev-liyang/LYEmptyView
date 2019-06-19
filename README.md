@@ -3,27 +3,6 @@
 
 #### 注意点:
 #### 1.除UITableViwe/UICollectionView外，这些View(包括UIScrollView)没有DataSource，代码层面无法判断有无数据，需手动管理显示隐藏，调用示例请移步示例8
-#### 2.因在1.1.0版本开始加入普通view都可设置占位图，故在方法调用上可能有些歧义，请照如下调用
-```Objective-C
-//这句没毛病
-self.view.ly_emptyView = [MyDIYEmpty diyNoDataEmpty];
-
-//显示占位图
-//错误: [self.view.ly_emptyView ly_showEmptyView];
-//正确: [self.view ly_showEmptyView];
-
-//隐藏占位图
-//错误: [self.view.ly_emptyView ly_hideEmptyView];
-//正确: [self.view ly_hideEmptyView];
-
-//网络请求开始
-//错误: [self.tableView.ly_emptyView ly_startLoading];
-//正确: [self.tableView ly_startLoading];
-
-//刷新UI时调用（保证在刷新UI后调用）
-//错误: [self.tableView.ly_emptyView ly_endLoading];
-//正确: [self.tableView ly_endLoading];
-```
 
 | 特点  | 描述 |
 | ---------- | -----------|
@@ -273,6 +252,10 @@ self.tableView.ly_emptyView = emptyView;
 ```
 
 ## 更新记录
+
+### 2019-06-18 (pod V1.2.4)
+* 1.将点击重试事件加到emptyView上（当设置empty完全覆盖父视图时，就可实现点击屏幕重试的效果）
+* 2.swift项目中imageNamed:方法string为nil时崩溃解决
 
 ### 2018-12-04 (pod V1.2.3)
 * 1.fix bug：当子控件的文字被设置为空并再次设置为非空时, 子控件无法正常显示

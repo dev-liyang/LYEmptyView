@@ -223,20 +223,45 @@
     UIColor *textColor = self.detailLabTextColor ? self.detailLabTextColor : kGrayColor;
     UIFont *font = self.detailLabFont.pointSize ? self.detailLabFont : kDetailLabFont;
     CGFloat fontSize = font.pointSize;
-    
-    CGFloat maxHeight = self.detailLabMaxLines ? self.detailLabMaxLines * (fontSize + 5) : 2 * (fontSize + 5);//如果没有设置最大行数，默认设置为2行的高度
-    
-    CGSize size = [self returnTextWidth:detailStr size:CGSizeMake(contentMaxWidth, maxHeight) font:font];//计算得出label大小
-    CGFloat width = size.width;
-    CGFloat height = size.height;
-    
+
     self.detailLabel.font = font;
-    self.detailLabel.frame = CGRectMake(0, contentHeight + subViweMargin, width, height);
-    self.detailLabel.text = detailStr;
     self.detailLabel.textColor = textColor;
+    self.detailLabel.text = detailStr;
+    
+    
+    CGFloat width = 0;
+    CGFloat height = 0;
+    
+    //设置行高
+    if(self.detailLabLineHeight){
+        
+        CGFloat maxHeight = self.detailLabMaxLines ?
+                            self.detailLabMaxLines * (fontSize + 5) + (self.detailLabMaxLines-1) * self.detailLabLineHeight :
+                            2 * (fontSize + 5) + (self.detailLabMaxLines-1) * self.detailLabLineHeight ;//如果没有设置最大行数，默认设置为2行的高度
+        
+        NSDictionary *dic = [self sizeWithAttributedString:self.detailLabel.text font:font lineSpacing:self.detailLabLineHeight maxSize:CGSizeMake(contentMaxWidth, maxHeight)];
+        
+        NSMutableAttributedString *attStr = dic[@"attributed"];
+        NSValue *sizeValue = dic[@"size"];
+        CGSize size = sizeValue.CGSizeValue;
+        width = size.width;
+        height = size.height + 10;
+        self.detailLabel.attributedText = attStr;
+        
+    }
+    else{
+        
+        CGFloat maxHeight = self.detailLabMaxLines ? self.detailLabMaxLines * (fontSize + 5) : 2 * (fontSize + 5);//如果没有设置最大行数，默认设置为2行的高度
+        CGSize size = [self returnTextWidth:detailStr size:CGSizeMake(contentMaxWidth, maxHeight) font:font];//计算得出label大小
+        width = size.width;
+        height = size.height;
+    }
+    
+    self.detailLabel.frame = CGRectMake(0, contentHeight + subViweMargin, width, height);
     
     contentWidth = width > contentWidth ? width : contentWidth;
     contentHeight = self.detailLabel.ly_maxY;
+   
 }
 
 - (void)setupActionBtn:(NSString *)btnTitle target:(id)target action:(SEL)action btnClickBlock:(LYActionTapBlock)btnClickBlock{
@@ -384,6 +409,16 @@
     }
 }
 
+-(void)setDetailLabLineHeight:(NSInteger)detailLabLineHeight{
+    if (_detailLabLineHeight != detailLabLineHeight) {
+        _detailLabLineHeight = detailLabLineHeight;
+        
+        if (_detailLabel) {
+            [self setupSubviews];
+        }
+    }
+}
+
 #pragma mark Button 相关
 //////////大小位置相关-需要重新布局
 - (void)setActionBtnFont:(UIFont *)actionBtnFont{
@@ -472,6 +507,26 @@
     CGSize textSize = [text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : font} context:nil].size;
     return textSize;
 }
+
+- (NSDictionary *)sizeWithAttributedString:(NSString *)string font:(UIFont *)font lineSpacing:(CGFloat)lineSpacing maxSize:(CGSize)maxSize{
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
+    paragraphStyle.lineSpacing = lineSpacing; // 设置行间距
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSParagraphStyleAttributeName: paragraphStyle}];
+    
+    CGSize size = [attributedStr boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
+    
+    NSDictionary *dic = @{
+                          @"attributed":attributedStr,
+                          @"size": [NSValue valueWithCGSize:size]
+                          };
+    return dic;
+}
+
+
 
 #pragma mark - ------------------ 懒加载 ------------------
 - (UIImageView *)promptImageView{

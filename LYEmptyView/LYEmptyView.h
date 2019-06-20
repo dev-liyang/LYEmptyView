@@ -74,6 +74,11 @@
  */
 @property (nonatomic, strong) UIColor  *detailLabTextColor;
 
+/**
+ 详细描述文字行高
+ */
+@property (nonatomic, assign) NSInteger detailLabLineHeight;
+
 
 //-------------------------- Button 相关 --------------------------//
 /**

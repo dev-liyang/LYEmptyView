@@ -19,8 +19,11 @@
 
 //按钮字体大小
 #define kActionBtnFont  [UIFont systemFontOfSize:14.f]
+
 //按钮高度
 #define kActionBtnHeight 40.f
+//按钮宽度
+#define kActionBtnWidth 120.f
 //水平方向内边距
 #define kActionBtnHorizontalMargin 30.f
 
@@ -48,12 +51,20 @@
     CGFloat contentHeight;   //内容物高度
     CGFloat subViweMargin;   //间距
 }
+
+- (void)initialize{
+    self.actionBtnHeight = 40.f;
+    self.actionBtnWidth = 120.f;
+    self.actionBtnHorizontalMargin = 30.f;
+}
+
 - (void)prepare{
     [super prepare];
     
     self.autoShowEmptyView = YES; //默认自动显隐
     self.contentViewY = 1000;     //默认值,用来判断是否设置过content的Y值
 }
+
 - (void)setupSubviews{
     [super setupSubviews];
     
@@ -243,20 +254,28 @@
     
     UIFont *font = self.actionBtnFont.pointSize ? self.actionBtnFont : kActionBtnFont;
     CGFloat fontSize = font.pointSize;
-    UIColor *titleColor = self.actionBtnTitleColor ? self.actionBtnTitleColor : kBlackColor;
-    UIColor *backGColor = self.actionBtnBackGroundColor ? self.actionBtnBackGroundColor : [UIColor whiteColor];
-    UIColor *borderColor = self.actionBtnBorderColor ? self.actionBtnBorderColor : [UIColor colorWithRed:0.8f green:0.8f blue:0.8f alpha:1];
-    CGFloat borderWidth = self.actionBtnBorderWidth ? self.actionBtnBorderWidth : 0.0f;
-    CGFloat cornerRadius = self.actionBtnCornerRadius ? self.actionBtnCornerRadius : 5.f;
-    CGFloat horiMargin = self.actionBtnHorizontalMargin ? self.actionBtnHorizontalMargin : kActionBtnHorizontalMargin;
-    CGFloat height = self.actionBtnHeight ? self.actionBtnHeight : kActionBtnHeight;
+    UIColor *titleColor = self.actionBtnTitleColor ?: kBlackColor;
+    UIColor *backGColor = self.actionBtnBackGroundColor ?: [UIColor whiteColor];
+    UIColor *borderColor = self.actionBtnBorderColor ?: [UIColor colorWithRed:0.8f green:0.8f blue:0.8f alpha:1.f];
+    CGFloat borderWidth = self.actionBtnBorderWidth ?: 0;
+    CGFloat cornerRadius = self.actionBtnCornerRadius ?: 0;
+    CGFloat width = self.actionBtnWidth;
+    CGFloat horiMargin = self.actionBtnHorizontalMargin;
+    CGFloat height = self.actionBtnHeight;
     CGSize textSize = [self returnTextWidth:btnTitle size:CGSizeMake(contentMaxWidth, fontSize) font:font];//计算得出title文字内容大小
     if (height < textSize.height) {
-        height = textSize.height + 4;
+        height = textSize.height + 4.f;
     }
     
-    //按钮的宽高
-    CGFloat btnWidth = textSize.width + horiMargin * 2;
+    //按钮的宽
+    CGFloat btnWidth = textSize.width;
+    if (width) {
+        btnWidth = width;
+    } else if (horiMargin) {
+        btnWidth = textSize.width + horiMargin * 2.f;
+    }
+    
+    //按钮的高
     CGFloat btnHeight = height;
     btnWidth = btnWidth > contentMaxWidth ? contentMaxWidth : btnWidth;
     
@@ -398,6 +417,15 @@
 - (void)setActionBtnHeight:(CGFloat)actionBtnHeight{
     if (_actionBtnHeight != actionBtnHeight) {
         _actionBtnHeight = actionBtnHeight;
+        
+        if (_actionButton) {
+            [self setupSubviews];
+        }
+    }
+}
+- (void)setActionBtnWidth:(CGFloat)actionBtnWidth{
+    if (_actionBtnWidth != actionBtnWidth) {
+        _actionBtnWidth = actionBtnWidth;
         
         if (_actionButton) {
             [self setupSubviews];

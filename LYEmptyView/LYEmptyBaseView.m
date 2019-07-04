@@ -19,10 +19,15 @@
 {
     self = [super init];
     if (self) {
+        [self initialize];
         [self prepare];
     }
     return self;
 }
+
+- (void)initialize{
+}
+
 - (void)prepare{
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth |  UIViewAutoresizingFlexibleHeight;
 }

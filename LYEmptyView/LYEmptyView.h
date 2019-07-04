@@ -85,11 +85,15 @@
  */
 @property (nonatomic, assign) CGFloat  actionBtnHeight;
 /**
- 水平方向内边距, default is 30.f
+ 按钮的宽度, default is 0.f, (此属性和actionBtnHorizontalMargin只有一个有效，都>0时，此属性优先级大)
+ */
+@property (nonatomic, assign) CGFloat  actionBtnWidth;
+/**
+ 按钮的水平方向内边距, default is 30.f, (此属性和actionBtnWidth只有一个有效，都>0时，此属性优先级小)
  */
 @property (nonatomic, assign) CGFloat  actionBtnHorizontalMargin;
 /**
- 按钮的圆角大小, default is 5.f
+ 按钮的圆角大小, default is 0
  */
 @property (nonatomic, assign) CGFloat  actionBtnCornerRadius;
 /**

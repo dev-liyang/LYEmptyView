@@ -253,6 +253,10 @@ self.tableView.ly_emptyView = emptyView;
 
 ## 更新记录
 
+### 2019-07-04 (pod V1.2.5)
+* 1.新增属性:按钮宽度actionBtnWidth
+* 2.修改属性默认值:按钮的圆角actionBtnCornerRadius默认改为0
+
 ### 2019-06-18 (pod V1.2.4)
 * 1.将点击重试事件加到emptyView上（当设置empty完全覆盖父视图时，就可实现点击屏幕重试的效果）
 * 2.swift项目中imageNamed:方法string为nil时崩溃解决

@@ -27,6 +27,21 @@
 @property (nonatomic, assign) CGFloat  subViewMargin;
 
 /**
+ 图片标题之间的间距 default is 0.f
+ */
+@property (nonatomic, assign) CGFloat  titleMargin;
+
+/**
+ 详细描述 与 (标题或图片) 之间的间距 default is 0.f
+ */
+@property (nonatomic, assign) CGFloat  detailMargin;
+
+/**
+ 按钮 与 (详细描述或标题或图片) 之间的间距 default is 0.f
+ */
+@property (nonatomic, assign) CGFloat  btnMargin;
+
+/**
  内容物-垂直方向偏移 (此属性与contentViewY 互斥，只有一个会有效)
  */
 @property (nonatomic, assign) CGFloat  contentViewOffset;
@@ -112,5 +127,9 @@
  按钮背景颜色
  */
 @property (nonatomic, strong) UIColor  *actionBtnBackGroundColor;
+/**
+ 按钮背景渐变颜色集合，2个
+ */
+@property (nonatomic, strong) NSArray<UIColor *> *actionBtnBackGroundGradientColors;
 
 @end

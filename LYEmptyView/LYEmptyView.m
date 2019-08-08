@@ -49,7 +49,7 @@
     CGFloat contentMaxWidth; //最大宽度
     CGFloat contentWidth;    //内容物宽度
     CGFloat contentHeight;   //内容物高度
-    CGFloat subViweMargin;   //间距
+    CGFloat subViweMargin;   //内容物上每个子控件之间的间距
 }
 
 - (void)initialize{
@@ -219,8 +219,9 @@
     CGFloat fontSize = font.pointSize;
     UIColor *textColor = self.titleLabTextColor ? self.titleLabTextColor : kBlackColor;
     CGFloat width = [self returnTextWidth:titleStr size:CGSizeMake(contentMaxWidth, fontSize) font:font].width;
+    CGFloat titleMargin = self.titleMargin > 0 ?: (contentHeight == 0 ?: subViweMargin);
     
-    self.titleLabel.frame = CGRectMake(0, contentHeight + subViweMargin, width, fontSize);
+    self.titleLabel.frame = CGRectMake(0, contentHeight + titleMargin, width, fontSize);
     self.titleLabel.font = font;
     self.titleLabel.text = titleStr;
     self.titleLabel.textColor = textColor;
@@ -240,9 +241,10 @@
     CGSize size = [self returnTextWidth:detailStr size:CGSizeMake(contentMaxWidth, maxHeight) font:font];//计算得出label大小
     CGFloat width = size.width;
     CGFloat height = size.height;
+    CGFloat detailMargin = self.detailMargin > 0 ? (self.detailMargin + self.titleMargin) : (contentHeight == 0 ?: subViweMargin);
     
     self.detailLabel.font = font;
-    self.detailLabel.frame = CGRectMake(0, contentHeight + subViweMargin, width, height);
+    self.detailLabel.frame = CGRectMake(0, contentHeight + detailMargin, width, height);
     self.detailLabel.text = detailStr;
     self.detailLabel.textColor = textColor;
     
@@ -278,11 +280,13 @@
     //按钮的高
     CGFloat btnHeight = height;
     btnWidth = btnWidth > contentMaxWidth ? contentMaxWidth : btnWidth;
+    CGFloat btnMargin = self.btnMargin > 0 ? (self.btnMargin + self.detailMargin + self.titleMargin) : (contentHeight == 0 ?: subViweMargin);
     
-    self.actionButton.frame = CGRectMake(0, contentHeight + subViweMargin, btnWidth, btnHeight);
+    self.actionButton.frame = CGRectMake(0, contentHeight + btnMargin, btnWidth, btnHeight);
     [self.actionButton setTitle:btnTitle forState:UIControlStateNormal];
     self.actionButton.titleLabel.font = font;
     self.actionButton.backgroundColor = backGColor;
+    if (self.actionBtnBackGroundGradientColors) [self addGradientWithView:self.actionButton gradientColors:self.actionBtnBackGroundGradientColors];
     [self.actionButton setTitleColor:titleColor forState:UIControlStateNormal];
     self.actionButton.layer.borderColor = borderColor.CGColor;
     self.actionButton.layer.borderWidth = borderWidth;
@@ -318,9 +322,33 @@
     if (_subViewMargin != subViewMargin) {
         _subViewMargin = subViewMargin;
         
-        if (_promptImageView || _titleLabel || _detailLabel || _actionButton || self.customView) {//此判断的意思只是确定self是否已加载完毕
-            [self setupSubviews];
-        }
+        [self reSetupSubviews];
+    }
+}
+- (void)setTitleMargin:(CGFloat)titleMargin{
+    if (_titleMargin != titleMargin) {
+        _titleMargin = titleMargin;
+        
+        [self reSetupSubviews];
+    }
+}
+- (void)setDetailMargin:(CGFloat)detailMargin{
+    if (_detailMargin != detailMargin) {
+        _detailMargin = detailMargin;
+        
+        [self reSetupSubviews];
+    }
+}
+-(void)setBtnMargin:(CGFloat)btnMargin{
+    if (_btnMargin != btnMargin) {
+        _btnMargin = btnMargin;
+        
+        [self reSetupSubviews];
+    }
+}
+- (void)reSetupSubviews{
+    if (_promptImageView || _titleLabel || _detailLabel || _actionButton || self.customView) {//此判断的意思只是确定self是否已加载完毕
+        [self setupSubviews];
     }
 }
 - (void)setContentViewOffset:(CGFloat)contentViewOffset{
@@ -487,6 +515,15 @@
         }
     }
 }
+- (void)setActionBtnBackGroundGradientColors:(NSArray<UIColor *> *)actionBtnBackGroundGradientColors
+{
+    if (actionBtnBackGroundGradientColors.count >= 2) {
+        _actionBtnBackGroundGradientColors = [actionBtnBackGroundGradientColors subarrayWithRange:NSMakeRange(0, 2)];
+        if (_actionButton) {
+            [self addGradientWithView:_actionButton gradientColors:_actionBtnBackGroundGradientColors];
+        }
+    }
+}
 
 #pragma mark - ------------------ Event Method ------------------
 - (void)actionBtnClick:(UIButton *)sender{
@@ -499,6 +536,29 @@
 - (CGSize)returnTextWidth:(NSString *)text size:(CGSize)size font:(UIFont *)font{
     CGSize textSize = [text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : font} context:nil].size;
     return textSize;
+}
+
+- (void)addGradientWithView:(UIView *)view gradientColors:(NSArray<UIColor *> *)gradientColors
+{
+    [view setBackgroundColor:[UIColor clearColor]];
+    
+    NSArray *colors = @[(__bridge id)[gradientColors.firstObject CGColor],
+                        (__bridge id)[gradientColors.lastObject CGColor]];
+    CAGradientLayer *layer = [CAGradientLayer layer];
+    layer.colors = colors;
+    layer.locations = @[@0.3, @0.5, @1.0];
+    layer.startPoint = CGPointMake(0, 0);
+    layer.endPoint = CGPointMake(1.0, 0);
+    layer.frame = view.bounds;
+    layer.masksToBounds = YES;
+    layer.cornerRadius = view.frame.size.height * 0.5;
+    
+    CALayer *firstLayer = self.layer.sublayers.firstObject;
+    if ([firstLayer isKindOfClass:[CAGradientLayer class]]) {
+        [view.layer replaceSublayer:firstLayer with:layer];
+    } else {
+        [view.layer insertSublayer:layer atIndex:0];
+    }
 }
 
 #pragma mark - ------------------ 懒加载 ------------------

@@ -219,7 +219,7 @@
     CGFloat fontSize = font.pointSize;
     UIColor *textColor = self.titleLabTextColor ? self.titleLabTextColor : kBlackColor;
     CGFloat width = [self returnTextWidth:titleStr size:CGSizeMake(contentMaxWidth, fontSize) font:font].width;
-    CGFloat titleMargin = self.titleMargin > 0 ?: (contentHeight == 0 ?: subViweMargin);
+    CGFloat titleMargin = self.titleMargin > 0 ? self.titleMargin : (contentHeight == 0 ?: subViweMargin);
     
     self.titleLabel.frame = CGRectMake(0, contentHeight + titleMargin, width, fontSize);
     self.titleLabel.font = font;

@@ -102,7 +102,8 @@
             emptyView.actionBtnHorizontalMargin = 74.f;
             emptyView.actionBtnCornerRadius = 20.f;
             emptyView.actionBtnBackGroundColor = MainColor(254, 219, 49);
-            
+            emptyView.actionBtnBackGroundGradientColors = @[[UIColor redColor], [UIColor orangeColor]];
+            emptyView.btnMargin = 100.0f;
         }
             break;
             
@@ -187,11 +188,17 @@
 }
 
 - (IBAction)addDataClick:(id)sender {
+    // 隐藏对应子视图，只需要清空里面的内容即可
+//    self.tableView.ly_emptyView.image = nil;
+//    self.tableView.ly_emptyView.imageStr = nil;
+//    self.tableView.ly_emptyView.titleStr = nil;
+//    self.tableView.ly_emptyView.btnMargin = 0.0f;
+    
     IndexNumber ++;
     NSString *str = [NSString stringWithFormat:@"数字%ld", IndexNumber];
-    
+
     if (IndexNumber > 0) {
-        
+
         [self.dataArray addObject:str];
         [self.tableView reloadData];
     }

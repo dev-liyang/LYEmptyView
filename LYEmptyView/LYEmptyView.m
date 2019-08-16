@@ -249,11 +249,11 @@
     CGFloat height = 0;
     
     //设置行高
-    if(self.detailLabLineHeight){
+    if(self.detailLabLineSpacing){
         
-        CGFloat maxHeight = maxLines * (fontSize + 5) + (maxLines-1) * self.detailLabLineHeight;
+        CGFloat maxHeight = maxLines * (fontSize + 5) + (maxLines-1) * self.detailLabLineSpacing;
         
-        NSDictionary *dic = [self sizeWithAttributedString:self.detailLabel.text font:font lineSpacing:self.detailLabLineHeight maxSize:CGSizeMake(contentMaxWidth, maxHeight)];
+        NSDictionary *dic = [self sizeWithAttributedString:self.detailLabel.text font:font lineSpacing:self.detailLabLineSpacing maxSize:CGSizeMake(contentMaxWidth, maxHeight)];
         
         NSMutableAttributedString *attStr = dic[@"attributed"];
         NSValue *sizeValue = dic[@"size"];
@@ -465,9 +465,9 @@
     }
 }
 
-- (void)setDetailLabLineHeight:(NSInteger)detailLabLineHeight{
-    if (_detailLabLineHeight != detailLabLineHeight) {
-        _detailLabLineHeight = detailLabLineHeight;
+- (void)setDetailLabLineSpacing:(NSInteger)detailLabLineSpacing{
+    if (_detailLabLineSpacing != detailLabLineSpacing) {
+        _detailLabLineSpacing = detailLabLineSpacing;
         
         if (_detailLabel) {
             [self setupSubviews];

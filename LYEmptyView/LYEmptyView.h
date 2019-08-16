@@ -83,9 +83,9 @@
 @property (nonatomic, strong) UIColor  *detailLabTextColor;
 
 /**
- 详细描述文字行高
+ 详细描述文字行间距
  */
-@property (nonatomic, assign) NSInteger detailLabLineHeight;
+@property (nonatomic, assign) NSInteger detailLabLineSpacing;
 
 /**
  详细描述 与 (标题或图片) 之间的间距 default is @subViewMargin

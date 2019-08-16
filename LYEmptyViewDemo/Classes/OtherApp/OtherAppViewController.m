@@ -103,7 +103,7 @@
             emptyView.actionBtnCornerRadius = 20.f;
             emptyView.actionBtnBackGroundColor = MainColor(254, 219, 49);
             emptyView.actionBtnBackGroundGradientColors = @[[UIColor redColor], [UIColor orangeColor]];
-            emptyView.btnMargin = 100.0f;
+            emptyView.actionBtnMargin = 100.0f;
         }
             break;
             

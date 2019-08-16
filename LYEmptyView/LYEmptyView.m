@@ -56,6 +56,7 @@
     self.actionBtnHeight = 40.f;
     self.actionBtnWidth = 120.f;
     self.actionBtnHorizontalMargin = 30.f;
+    self.detailLabMaxLines = 2;
 }
 
 - (void)prepare{
@@ -218,10 +219,13 @@
     UIFont *font = self.titleLabFont.pointSize ? self.titleLabFont : kTitleLabFont;
     CGFloat fontSize = font.pointSize;
     UIColor *textColor = self.titleLabTextColor ? self.titleLabTextColor : kBlackColor;
-    CGFloat width = [self returnTextWidth:titleStr size:CGSizeMake(contentMaxWidth, fontSize) font:font].width;
-    CGFloat titleMargin = self.titleMargin > 0 ? self.titleMargin : (contentHeight == 0 ?: subViweMargin);
+    CGFloat titleMargin = self.titleLabMargin > 0 ? self.titleLabMargin : (contentHeight == 0 ?: subViweMargin);
+    CGSize size = [self returnTextWidth:titleStr size:CGSizeMake(contentMaxWidth, fontSize + 5) font:font];
     
-    self.titleLabel.frame = CGRectMake(0, contentHeight + titleMargin, width, fontSize);
+    CGFloat width = size.width;
+    CGFloat height = size.height;
+    
+    self.titleLabel.frame = CGRectMake(0, contentHeight + titleMargin, width, height);
     self.titleLabel.font = font;
     self.titleLabel.text = titleStr;
     self.titleLabel.textColor = textColor;
@@ -235,11 +239,11 @@
     UIColor *textColor = self.detailLabTextColor ? self.detailLabTextColor : kGrayColor;
     UIFont *font = self.detailLabFont.pointSize ? self.detailLabFont : kDetailLabFont;
     CGFloat fontSize = font.pointSize;
-
+    CGFloat maxLines = self.detailLabMaxLines > 0 ? self.detailLabMaxLines : 1;
+    CGFloat detailMargin = self.detailLabMargin > 0 ? self.detailLabMargin : (contentHeight == 0 ?: subViweMargin);
     self.detailLabel.font = font;
     self.detailLabel.textColor = textColor;
     self.detailLabel.text = detailStr;
-    
     
     CGFloat width = 0;
     CGFloat height = 0;
@@ -247,9 +251,7 @@
     //设置行高
     if(self.detailLabLineHeight){
         
-        CGFloat maxHeight = self.detailLabMaxLines ?
-                            self.detailLabMaxLines * (fontSize + 5) + (self.detailLabMaxLines-1) * self.detailLabLineHeight :
-                            2 * (fontSize + 5) + (self.detailLabMaxLines-1) * self.detailLabLineHeight ;//如果没有设置最大行数，默认设置为2行的高度
+        CGFloat maxHeight = maxLines * (fontSize + 5) + (maxLines-1) * self.detailLabLineHeight;
         
         NSDictionary *dic = [self sizeWithAttributedString:self.detailLabel.text font:font lineSpacing:self.detailLabLineHeight maxSize:CGSizeMake(contentMaxWidth, maxHeight)];
         
@@ -257,19 +259,19 @@
         NSValue *sizeValue = dic[@"size"];
         CGSize size = sizeValue.CGSizeValue;
         width = size.width;
-        height = size.height + 10;
+        height = size.height;
         self.detailLabel.attributedText = attStr;
         
     }
     else{
         
-        CGFloat maxHeight = self.detailLabMaxLines ? self.detailLabMaxLines * (fontSize + 5) : 2 * (fontSize + 5);//如果没有设置最大行数，默认设置为2行的高度
+        CGFloat maxHeight = maxLines * (fontSize + 5);
         CGSize size = [self returnTextWidth:detailStr size:CGSizeMake(contentMaxWidth, maxHeight) font:font];//计算得出label大小
         width = size.width;
         height = size.height;
     }
     
-    self.detailLabel.frame = CGRectMake(0, contentHeight + subViweMargin, width, height);
+    self.detailLabel.frame = CGRectMake(0, contentHeight + detailMargin, width, height);
     
     contentWidth = width > contentWidth ? width : contentWidth;
     contentHeight = self.detailLabel.ly_maxY;
@@ -304,7 +306,7 @@
     //按钮的高
     CGFloat btnHeight = height;
     btnWidth = btnWidth > contentMaxWidth ? contentMaxWidth : btnWidth;
-    CGFloat btnMargin = self.btnMargin > 0 ? (self.btnMargin + self.detailMargin + self.titleMargin) : (contentHeight == 0 ?: subViweMargin);
+    CGFloat btnMargin = self.actionBtnMargin > 0 ? self.actionBtnMargin : (contentHeight == 0 ?: subViweMargin);
     
     self.actionButton.frame = CGRectMake(0, contentHeight + btnMargin, btnWidth, btnHeight);
     [self.actionButton setTitle:btnTitle forState:UIControlStateNormal];
@@ -327,7 +329,15 @@
     contentWidth = btnWidth > contentWidth ? btnWidth : contentWidth;
     contentHeight = self.actionButton.ly_maxY;
 }
-#pragma mark - ------------------ Properties Set ------------------
+
+#pragma mark - ------------------ Event Method ------------------
+- (void)actionBtnClick:(UIButton *)sender{
+    if (self.btnClickBlock) {
+        self.btnClickBlock();
+    }
+}
+
+#pragma mark - ------------------ setter ------------------
 
 - (void)setEmptyViewIsCompleteCoverSuperView:(BOOL)emptyViewIsCompleteCoverSuperView{
     _emptyViewIsCompleteCoverSuperView = emptyViewIsCompleteCoverSuperView;
@@ -349,23 +359,23 @@
         [self reSetupSubviews];
     }
 }
-- (void)setTitleMargin:(CGFloat)titleMargin{
-    if (_titleMargin != titleMargin) {
-        _titleMargin = titleMargin;
+- (void)setTitleLabMargin:(CGFloat)titleLabMargin{
+    if (_titleLabMargin != titleLabMargin) {
+        _titleLabMargin = titleLabMargin;
         
         [self reSetupSubviews];
     }
 }
-- (void)setDetailMargin:(CGFloat)detailMargin{
-    if (_detailMargin != detailMargin) {
-        _detailMargin = detailMargin;
+- (void)setDetailLabMargin:(CGFloat)detailLabMargin{
+    if (_detailLabMargin != detailLabMargin) {
+        _detailLabMargin = detailLabMargin;
         
         [self reSetupSubviews];
     }
 }
--(void)setBtnMargin:(CGFloat)btnMargin{
-    if (_btnMargin != btnMargin) {
-        _btnMargin = btnMargin;
+- (void)setActionBtnMargin:(CGFloat)actionBtnMargin{
+    if (_actionBtnMargin != actionBtnMargin) {
+        _actionBtnMargin = actionBtnMargin;
         
         [self reSetupSubviews];
     }
@@ -406,7 +416,7 @@
 }
 
 #pragma mark 描述Label 相关
--(void)setTitleLabFont:(UIFont *)titleLabFont{
+- (void)setTitleLabFont:(UIFont *)titleLabFont{
     if (_titleLabFont != titleLabFont) {
         _titleLabFont = titleLabFont;
         
@@ -445,7 +455,7 @@
         }
     }
 }
--(void)setDetailLabTextColor:(UIColor *)detailLabTextColor{
+- (void)setDetailLabTextColor:(UIColor *)detailLabTextColor{
     if (_detailLabTextColor != detailLabTextColor) {
         _detailLabTextColor = detailLabTextColor;
         
@@ -455,7 +465,7 @@
     }
 }
 
--(void)setDetailLabLineHeight:(NSInteger)detailLabLineHeight{
+- (void)setDetailLabLineHeight:(NSInteger)detailLabLineHeight{
     if (_detailLabLineHeight != detailLabLineHeight) {
         _detailLabLineHeight = detailLabLineHeight;
         
@@ -559,63 +569,7 @@
     }
 }
 
-#pragma mark - ------------------ Event Method ------------------
-- (void)actionBtnClick:(UIButton *)sender{
-    if (self.btnClickBlock) {
-        self.btnClickBlock();
-    }
-}
-
-#pragma mark - ------------------ Help Method ------------------
-- (CGSize)returnTextWidth:(NSString *)text size:(CGSize)size font:(UIFont *)font{
-    CGSize textSize = [text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : font} context:nil].size;
-    return textSize;
-}
-
-- (void)addGradientWithView:(UIView *)view gradientColors:(NSArray<UIColor *> *)gradientColors
-{
-    [view setBackgroundColor:[UIColor clearColor]];
-    
-    NSArray *colors = @[(__bridge id)[gradientColors.firstObject CGColor],
-                        (__bridge id)[gradientColors.lastObject CGColor]];
-    CAGradientLayer *layer = [CAGradientLayer layer];
-    layer.colors = colors;
-    layer.locations = @[@0.3, @0.5, @1.0];
-    layer.startPoint = CGPointMake(0, 0);
-    layer.endPoint = CGPointMake(1.0, 0);
-    layer.frame = view.bounds;
-    layer.masksToBounds = YES;
-    layer.cornerRadius = view.frame.size.height * 0.5;
-    
-    CALayer *firstLayer = self.layer.sublayers.firstObject;
-    if ([firstLayer isKindOfClass:[CAGradientLayer class]]) {
-        [view.layer replaceSublayer:firstLayer with:layer];
-    } else {
-        [view.layer insertSublayer:layer atIndex:0];
-    }
-}
-
-- (NSDictionary *)sizeWithAttributedString:(NSString *)string font:(UIFont *)font lineSpacing:(CGFloat)lineSpacing maxSize:(CGSize)maxSize{
-    
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
-    paragraphStyle.lineSpacing = lineSpacing; // 设置行间距
-    paragraphStyle.alignment = NSTextAlignmentCenter;
-    
-    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSParagraphStyleAttributeName: paragraphStyle}];
-    
-    CGSize size = [attributedStr boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
-    
-    NSDictionary *dic = @{
-                          @"attributed":attributedStr,
-                          @"size": [NSValue valueWithCGSize:size]
-                          };
-    return dic;
-}
-
-
-
-#pragma mark - ------------------ 懒加载 ------------------
+#pragma mark - ------------------ getter ------------------
 - (UIImageView *)promptImageView{
     if (!_promptImageView) {
         _promptImageView = [[UIImageView alloc] init];
@@ -648,6 +602,53 @@
         [self.contentView addSubview:_actionButton];
     }
     return _actionButton;
+}
+
+#pragma mark - ------------------ Help Method ------------------
+- (CGSize)returnTextWidth:(NSString *)text size:(CGSize)size font:(UIFont *)font{
+    CGSize textSize = [text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : font} context:nil].size;
+    return textSize;
+}
+
+- (NSDictionary *)sizeWithAttributedString:(NSString *)string font:(UIFont *)font lineSpacing:(CGFloat)lineSpacing maxSize:(CGSize)maxSize{
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.lineSpacing = lineSpacing; // 设置行间距
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSParagraphStyleAttributeName: paragraphStyle, NSFontAttributeName:font}];
+    
+    CGSize size = [attributedStr boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
+    
+    NSDictionary *dic = @{
+                          @"attributed":attributedStr,
+                          @"size": [NSValue valueWithCGSize:size]
+                          };
+    return dic;
+}
+
+- (void)addGradientWithView:(UIView *)view gradientColors:(NSArray<UIColor *> *)gradientColors
+{
+    [view setBackgroundColor:[UIColor clearColor]];
+    
+    NSArray *colors = @[(__bridge id)[gradientColors.firstObject CGColor],
+                        (__bridge id)[gradientColors.lastObject CGColor]];
+    CAGradientLayer *layer = [CAGradientLayer layer];
+    layer.colors = colors;
+    layer.locations = @[@0.3, @0.5, @1.0];
+    layer.startPoint = CGPointMake(0, 0);
+    layer.endPoint = CGPointMake(1.0, 0);
+    layer.frame = view.bounds;
+    layer.masksToBounds = YES;
+    layer.cornerRadius = view.frame.size.height * 0.5;
+    
+    CALayer *firstLayer = self.layer.sublayers.firstObject;
+    if ([firstLayer isKindOfClass:[CAGradientLayer class]]) {
+        [view.layer replaceSublayer:firstLayer with:layer];
+    } else {
+        [view.layer insertSublayer:layer atIndex:0];
+    }
 }
 
 @end

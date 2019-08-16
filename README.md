@@ -253,6 +253,12 @@ self.tableView.ly_emptyView = emptyView;
 
 ## 更新记录
 
+### 2019-08-16 (pod V1.3.0)
+* 1.detailLab添加行间距属性
+* 2.每个子控件可单独设置间距
+* 3.actionBtn添加渐变背景颜色属性
+* 4.更改添加emptyView时其显隐的逻辑
+
 ### 2019-07-04 (pod V1.2.5)
 * 1.新增属性:按钮宽度actionBtnWidth
 * 2.修改属性默认值:按钮的圆角actionBtnCornerRadius默认改为0

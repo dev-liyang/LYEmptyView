@@ -33,7 +33,12 @@ static char kEmptyViewKey;
             }
         }
         [self addSubview:self.ly_emptyView];
-        self.ly_emptyView.hidden = YES;//添加时默认隐藏
+        
+        if ([self isKindOfClass:[UITableView class]] || [self isKindOfClass:[UICollectionView class]]) {
+            [self getDataAndSet]; // 添加时根据DataSource去决定显隐
+        } else {
+            self.ly_emptyView.hidden = YES;// 添加时默认隐藏
+        }
     }
 }
 - (LYEmptyView *)ly_emptyView{
@@ -107,7 +112,6 @@ static char kEmptyViewKey;
     NSAssert(![self isKindOfClass:[LYEmptyView class]], @"LYEmptyView及其子类不能调用ly_hideEmptyView方法");
     self.ly_emptyView.hidden = YES;
 }
-
 - (void)ly_startLoading{
     NSAssert(![self isKindOfClass:[LYEmptyView class]], @"LYEmptyView及其子类不能调用ly_startLoading方法");
     self.ly_emptyView.hidden = YES;

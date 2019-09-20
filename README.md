@@ -3,6 +3,7 @@
 
 #### 注意点:
 #### 1.除UITableViwe/UICollectionView外，这些View(包括UIScrollView)没有DataSource，代码层面无法判断有无数据，需手动管理显示隐藏，调用示例请移步示例8
+#### 2.customView 暂不支持AutoLayout
 
 | 特点  | 描述 |
 | ---------- | -----------|
@@ -253,23 +254,27 @@ self.tableView.ly_emptyView = emptyView;
 
 ## 更新记录
 
+### 2019-09-20 (pod V1.3.1)
+* 完善scrollView的contentInset
+* 解决reloadData调用顺序导致empty被隐藏问题
+
 ### 2019-08-16 (pod V1.3.0)
-* 1.detailLab添加行间距属性
-* 2.每个子控件可单独设置间距
-* 3.actionBtn添加渐变背景颜色属性
-* 4.更改添加emptyView时其显隐的逻辑
+* detailLab添加行间距属性
+* 每个子控件可单独设置间距
+* actionBtn添加渐变背景颜色属性
+* 更改添加emptyView时其显隐的逻辑
 
 ### 2019-07-04 (pod V1.2.5)
-* 1.新增属性:按钮宽度actionBtnWidth
-* 2.修改属性默认值:按钮的圆角actionBtnCornerRadius默认改为0
+* 新增属性:按钮宽度actionBtnWidth
+* 修改属性默认值:按钮的圆角actionBtnCornerRadius默认改为0
 
 ### 2019-06-18 (pod V1.2.4)
-* 1.将点击重试事件加到emptyView上（当设置empty完全覆盖父视图时，就可实现点击屏幕重试的效果）
-* 2.swift项目中imageNamed:方法string为nil时崩溃解决
+* 将点击重试事件加到emptyView上（当设置empty完全覆盖父视图时，就可实现点击屏幕重试的效果）
+* swift项目中imageNamed:方法string为nil时崩溃解决
 
 ### 2018-12-04 (pod V1.2.3)
-* 1.fix bug：当子控件的文字被设置为空并再次设置为非空时, 子控件无法正常显示
-* 2.新增属性：ignoreContentInset，是否忽略scrollView的contentInset
+* fix bug：当子控件的文字被设置为空并再次设置为非空时, 子控件无法正常显示
+* 新增属性：ignoreContentInset，是否忽略scrollView的contentInset
 
 ### 2018-09-11 (pod V1.2.2)
 * 新增构造方法，具体请查看LYEmptyBaseView.h

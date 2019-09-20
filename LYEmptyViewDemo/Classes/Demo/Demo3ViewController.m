@@ -27,6 +27,8 @@
     [super viewDidLoad];
     
     [self setUI];
+    
+    [self loadData];
 }
 
 - (void)setUI{
@@ -48,7 +50,7 @@
     [self.tableView ly_endLoading];
 }
 
-- (void)loadTestData{
+- (void)loadData{
     [self.tableView ly_startLoading];
     [self loadDataWithFinish:^{
         [self.tableView ly_endLoading];
@@ -65,7 +67,7 @@
 
 - (DemoEmptyView *)noNetworkView{
     if (!_noNetworkView) {
-        _noNetworkView = [DemoEmptyView diyEmptyActionViewWithTarget:self action:@selector(loadTestData)];
+        _noNetworkView = [DemoEmptyView diyEmptyActionViewWithTarget:self action:@selector(loadData)];
         //_noNetworkView.autoShowEmptyView = NO; //二次封装的DemoEmptyView内如果设置过了，此处也可不写
     }
     return _noNetworkView;

@@ -24,6 +24,8 @@
     [super viewDidLoad];
     
     [self setUI];
+    
+    [self loadDataWithFinish:nil];
 }
 
 - (void)setUI{

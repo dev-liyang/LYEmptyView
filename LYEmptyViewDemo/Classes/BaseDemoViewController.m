@@ -34,8 +34,6 @@
     self.dataArray = [NSMutableArray array];
     
     [self setupUI];
-    
-    [self requestDataWithFinish:nil];
 }
 
 - (void)setupUI{

@@ -77,19 +77,16 @@ static char kEmptyViewKey;
     }
 }
 - (void)show{
-    
     //当不自动显隐时，内部自动调用show方法时也不要去显示，要显示的话只有手动去调用 ly_showEmptyView
     if (!self.ly_emptyView.autoShowEmptyView) {
-        self.ly_emptyView.hidden = YES;
         return;
     }
     
     [self ly_showEmptyView];
 }
 - (void)hide{
-    
+    //当不自动显隐时，内部自动调用hide方法时也不要去隐藏，要隐藏的话只有手动去调用 ly_hideEmptyView
     if (!self.ly_emptyView.autoShowEmptyView) {
-        self.ly_emptyView.hidden = YES;
         return;
     }
     
@@ -100,9 +97,7 @@ static char kEmptyViewKey;
 - (void)ly_showEmptyView{
     
     NSAssert(![self isKindOfClass:[LYEmptyView class]], @"LYEmptyView及其子类不能调用ly_showEmptyView方法");
-    
-    [self.ly_emptyView.superview layoutSubviews];
-    
+
     self.ly_emptyView.hidden = NO;
     
     //让 emptyBGView 始终保持在最上层

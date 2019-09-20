@@ -187,6 +187,8 @@
         UIScrollView *scrollView = (UIScrollView *)self.superview;
         self.ly_centerY -= scrollView.contentInset.top;
         self.ly_centerX -= scrollView.contentInset.left;
+        self.ly_centerY += scrollView.contentInset.bottom;
+        self.ly_centerX += scrollView.contentInset.right;
     }
 }
 
